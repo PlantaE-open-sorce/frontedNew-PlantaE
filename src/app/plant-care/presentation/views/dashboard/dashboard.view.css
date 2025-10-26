@@ -1,0 +1,111 @@
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.dashboard__welcome {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  padding: clamp(1.5rem, 2vw, 3rem);
+  background: linear-gradient(135deg, #1a5333 0%, #2d8659 100%);
+  border-radius: 24px;
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.welcome__content h1 {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.welcome__content p {
+  font-size: 1.1rem;
+  opacity: 0.9;
+  margin-bottom: 1.5rem;
+}
+
+.user-meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1.25rem;
+  margin: 0;
+}
+
+.user-meta dt {
+  font-size: 0.85rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  opacity: 0.8;
+}
+
+.user-meta dd {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin: 0.35rem 0 0;
+}
+
+.welcome__illustration {
+  background-image: url('https://www.hola.com/horizon/landscape/df6dfca02bf6-adobestock357293965.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  min-height: 260px;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.2);
+}
+
+.summary {
+  background: #1f612f;
+  border-radius: 24px;
+  padding: 2rem clamp(1.5rem, 2vw, 3rem);
+  color: #fff;
+  box-shadow: 0 20px 40px rgba(31, 97, 47, 0.25);
+}
+
+.summary__header h2 {
+  font-size: clamp(1.6rem, 3vw, 2.2rem);
+  font-weight: 800;
+  margin-bottom: 0.5rem;
+}
+
+.summary__header p {
+  margin: 0;
+  opacity: 0.85;
+}
+
+.summary__grid {
+  margin-top: 2rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+}
+
+.summary-card {
+  background: rgba(12, 42, 58, 0.85);
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.12);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.summary-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 30px rgba(12, 42, 58, 0.35);
+}
+
+.summary-card h3 {
+  margin: 0;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  opacity: 0.8;
+}
+
+.summary-card__value {
+  margin: 0.75rem 0 0;
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 800;
+}

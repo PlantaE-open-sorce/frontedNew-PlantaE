@@ -1,0 +1,44 @@
+<section class="dashboard" *ngIf="vm$ | async as vm">
+  <div class="dashboard__welcome">
+    <div class="welcome__content">
+      <h1 [innerHTML]="'dashboard.welcome-title' | translate:{ name: vm.user.firstName }"></h1>
+      <p>{{ 'dashboard.subtitle' | translate }}</p>
+      <dl class="user-meta">
+        <div>
+          <dt>{{ 'dashboard.member-since' | translate }}</dt>
+          <dd>{{ vm.user.joinDate | date:'longDate' }}</dd>
+        </div>
+        <div>
+          <dt>{{ 'dashboard.subscription' | translate }}</dt>
+          <dd>{{ vm.user.subscriptionLevel }}</dd>
+        </div>
+      </dl>
+    </div>
+    <div class="welcome__illustration" aria-hidden="true"></div>
+  </div>
+
+  <section class="summary" aria-label="{{ 'dashboard.summary.title' | translate }}">
+    <header class="summary__header">
+      <h2>{{ 'dashboard.summary.title' | translate }}</h2>
+      <p>{{ 'dashboard.summary.subtitle' | translate }}</p>
+    </header>
+    <div class="summary__grid">
+      <article class="summary-card">
+        <h3>{{ 'dashboard.summary.plants' | translate }}</h3>
+        <p class="summary-card__value">{{ vm.summary.plantCount }}</p>
+      </article>
+      <article class="summary-card">
+        <h3>{{ 'dashboard.summary.tasks' | translate }}</h3>
+        <p class="summary-card__value">{{ vm.summary.taskCount }}</p>
+      </article>
+      <article class="summary-card">
+        <h3>{{ 'dashboard.summary.alerts' | translate }}</h3>
+        <p class="summary-card__value">{{ vm.summary.alertCount }}</p>
+      </article>
+      <article class="summary-card">
+        <h3>{{ 'dashboard.summary.photos' | translate }}</h3>
+        <p class="summary-card__value">{{ vm.summary.photoCount }}</p>
+      </article>
+    </div>
+  </section>
+</section>
