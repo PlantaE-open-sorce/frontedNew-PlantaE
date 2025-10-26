@@ -1,0 +1,169 @@
+{
+  "common": {
+    "back": "Back",
+    "cancel": "Cancel",
+    "save": "Save",
+    "continue": "Continue"
+  },
+  "shell": {
+    "add-plant": "Add plant",
+    "dashboard": "Overview",
+    "my-plants": "My plants",
+    "manage-plants": "Management",
+    "settings": "Settings",
+    "profile": "Profile",
+    "brand-alt": "Flor brand featuring a fresh plant"
+  },
+  "dashboard": {
+    "welcome-title": "Welcome back <strong>{{ name }}</strong>!",
+    "subtitle": "Keep every connected plant thriving and joyful.",
+    "member-since": "Member since",
+    "subscription": "Account type",
+    "summary": {
+      "title": "Summary",
+      "subtitle": "Quickly understand the health of your ecosystem",
+      "plants": "Plants",
+      "tasks": "Tasks",
+      "alerts": "Alerts",
+      "photos": "Photos"
+    }
+  },
+  "settings": {
+    "title": "Options",
+    "subtitle": "Tune notifications and comfort settings",
+    "language": {
+      "title": "Language",
+      "es": "Es",
+      "en": "En"
+    },
+    "theme": {
+      "title": "Light mode",
+      "day": "Day",
+      "night": "Night"
+    },
+    "notifications": {
+      "title": "Notifications",
+      "sms": "Text messages",
+      "email": "Email",
+      "calls": "Calls",
+      "social": "Social media"
+    },
+    "alarm": {
+      "title": "Alarm type",
+      "label": "Choose a chime"
+    }
+  },
+  "profile": {
+    "title": "User information",
+    "first-name": "First name",
+    "last-name": "Last name",
+    "username": "Username",
+    "email": "Email",
+    "joined": "Joined on",
+    "subscription": "Plan",
+    "photo-url": "Profile photo URL",
+    "photo-url-hint": "Paste a direct link to your avatar",
+    "photo-url-error": "Add a valid image URL",
+    "save": "Save profile",
+    "success": "Profile updated successfully!",
+    "error": "There was a problem updating your profile."
+  },
+  "add-plant": {
+    "title": "Add plant",
+    "subtitle": "Pair a new smart plant with your greenhouse",
+    "name": "Plant name",
+    "type": "Plant type",
+    "sowing-date": "Sowing date",
+    "sensor-code": "IoT sensor code",
+    "image-url": "Plant image URL",
+    "image-url-hint": "Copy the direct link to a photo (https://...)",
+    "image-url-error": "Enter a valid image link beginning with http or https",
+    "new-status": "New plant",
+    "success": {
+      "title": "Plant created successfully!",
+      "message": "The plant is now part of your collection."
+    },
+    "error": {
+      "title": "Oops... something went wrong",
+      "message": "We could not save the plant. Please try again."
+    }
+  },
+  "plant-list": {
+    "title": "My plants",
+    "subtitle": "Keep an eye on your connected crops",
+    "last-review": "Last review: {{ days }} days"
+  },
+  "plant-detail": {
+    "title": "Plant: {{ name }}",
+    "subtitle": "Update data and keep the monitoring fresh",
+    "delete": "Remove plant",
+    "delete-error": "We couldn't delete the plant. Please try again.",
+    "sensor": "IoT connector: {{ code }}",
+    "edit-title": "Edit plant information",
+    "form": {
+      "name": "Name",
+      "type": "Type",
+      "sowing-date": "Sowing date",
+      "sensor-code": "Sensor code",
+      "status-label": "Status label",
+      "image-url": "Image URL",
+      "image-url-hint": "Use an online photo link (https://...)",
+      "image-url-error": "Please provide a valid URL",
+      "reports-url": "Reports URL",
+      "reports-url-error": "Enter a valid reports link",
+      "save": "Save changes",
+      "success": "Plant updated successfully!",
+      "error": "We couldn't update the plant. Check the fields and try again."
+    },
+    "metrics": {
+      "title": "Metrics",
+      "soil-humidity": "Soil humidity (%)",
+      "ambient-temperature": "Ambient temperature (°C)",
+      "battery": "Battery",
+      "ph": "Soil pH",
+      "conductivity": "Conductivity (µS)"
+    }
+  },
+  "plant-management": {
+    "title": "Plant management",
+    "sort": {
+      "label": "Sort by",
+      "name": "Name",
+      "critical": "Most critical plants",
+      "recent": "Newest plantings",
+      "active": "Most active sensors"
+    },
+    "columns": {
+      "name": "Names",
+      "sensor": "Sensors",
+      "alert": "Alerts!",
+      "report": "Reports"
+    },
+    "view-report": "View report"
+  },
+  "auth": {
+    "login": {
+      "title": "Welcome back",
+      "subtitle": "Sign in to continue caring for your connected plants.",
+      "username": "Username",
+      "password": "Password",
+      "submit": "Sign in",
+      "register-hint": "Don't have an account yet?",
+      "register-link": "Create one",
+      "error": "Invalid credentials, please try again."
+    },
+    "register": {
+      "title": "Create account",
+      "subtitle": "Register to sync your smart greenhouse.",
+      "firstName": "First name",
+      "lastName": "Last name",
+      "email": "Email",
+      "username": "Username",
+      "password": "Password",
+      "submit": "Register",
+      "login-hint": "Already have an account?",
+      "login-link": "Sign in",
+      "error": "We couldn't complete your registration. Try again."
+    }
+  }
+}

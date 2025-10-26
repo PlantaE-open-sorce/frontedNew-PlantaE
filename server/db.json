@@ -1,0 +1,367 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "firstName": "Flor de Maria",
+      "lastName": "Contreras Leon",
+      "email": "flor@upc.com",
+      "username": "florupc",
+      "password": "flor2025",
+      "joinDate": "2025-09-18",
+      "photoUrl": "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=400&q=80",
+      "subscriptionLevel": "Plan Pro"
+    }
+  ],
+  "profile": {
+    "id": 1,
+    "firstName": "Flor de Maria",
+    "lastName": "Contreras Leon",
+    "email": "flor@upc.com",
+    "username": "florupc",
+    "password": "flor2025",
+    "joinDate": "2025-09-18",
+    "photoUrl": "https://images.unsplash.com/photo-1544723795-3fb6469f5b39?auto=format&fit=crop&w=400&q=80",
+    "subscriptionLevel": "Plan Pro"
+  },
+  "settings": {
+    "item": {
+      "item": {
+        "item": {
+          "item": {
+            "item": {
+              "item": {
+                "item": {
+                  "language": "es",
+                  "theme": "day",
+                  "notifications": {
+                    "sms": true,
+                    "email": true,
+                    "phoneCall": false,
+                    "socialMedia": true
+                  },
+                  "alarm": {
+                    "type": "Campanazos",
+                    "options": [
+                      "Campanazos",
+                      "Lluvia suave",
+                      "Viento en bambú",
+                      "Campanas cristalinas"
+                    ]
+                  }
+                },
+                "language": "es",
+                "theme": "night",
+                "notifications": {
+                  "sms": true,
+                  "email": true,
+                  "phoneCall": false,
+                  "socialMedia": true
+                },
+                "alarm": {
+                  "type": "Campanazos",
+                  "options": [
+                    "Campanazos",
+                    "Lluvia suave",
+                    "Viento en bambú",
+                    "Campanas cristalinas"
+                  ]
+                }
+              },
+              "language": "es",
+              "theme": "day",
+              "notifications": {
+                "sms": true,
+                "email": true,
+                "phoneCall": false,
+                "socialMedia": true
+              },
+              "alarm": {
+                "type": "Campanazos",
+                "options": [
+                  "Campanazos",
+                  "Lluvia suave",
+                  "Viento en bambú",
+                  "Campanas cristalinas"
+                ]
+              }
+            },
+            "language": "es",
+            "theme": "day",
+            "notifications": {
+              "sms": true,
+              "email": true,
+              "phoneCall": false,
+              "socialMedia": true
+            },
+            "alarm": {
+              "type": "Campanazos",
+              "options": [
+                "Campanazos",
+                "Lluvia suave",
+                "Viento en bambú",
+                "Campanas cristalinas"
+              ]
+            }
+          },
+          "language": "en",
+          "theme": "day",
+          "notifications": {
+            "sms": true,
+            "email": true,
+            "phoneCall": false,
+            "socialMedia": true
+          },
+          "alarm": {
+            "type": "Campanazos",
+            "options": [
+              "Campanazos",
+              "Lluvia suave",
+              "Viento en bambú",
+              "Campanas cristalinas"
+            ]
+          }
+        },
+        "language": "es",
+        "theme": "day",
+        "notifications": {
+          "sms": true,
+          "email": true,
+          "phoneCall": false,
+          "socialMedia": true
+        },
+        "alarm": {
+          "type": "Campanazos",
+          "options": [
+            "Campanazos",
+            "Lluvia suave",
+            "Viento en bambú",
+            "Campanas cristalinas"
+          ]
+        }
+      },
+      "language": "en",
+      "theme": "day",
+      "notifications": {
+        "sms": true,
+        "email": true,
+        "phoneCall": false,
+        "socialMedia": true
+      },
+      "alarm": {
+        "type": "Campanazos",
+        "options": [
+          "Campanazos",
+          "Lluvia suave",
+          "Viento en bambú",
+          "Campanas cristalinas"
+        ]
+      }
+    },
+    "language": "es",
+    "theme": "day",
+    "notifications": {
+      "sms": true,
+      "email": true,
+      "phoneCall": false,
+      "socialMedia": true
+    },
+    "alarm": {
+      "type": "Campanazos",
+      "options": [
+        "Campanazos",
+        "Lluvia suave",
+        "Viento en bambú",
+        "Campanas cristalinas"
+      ]
+    }
+  },
+  "dashboardSummary": {
+    "plantCount": 6,
+    "taskCount": 3,
+    "alertCount": 2,
+    "photoCount": 12
+  },
+  "plantTypes": [
+    {
+      "id": "fern",
+      "name": {
+        "es": "Helecho",
+        "en": "Fern"
+      },
+      "imageUrl": "https://img.freepik.com/foto-gratis/plantas-interior-estudio_23-2151022099.jpg?semt=ais_hybrid&w=740&q=80"
+    },
+    {
+      "id": "succulent",
+      "name": {
+        "es": "Suculenta",
+        "en": "Succulent"
+      },
+      "imageUrl": "https://wl-genial.cf.tsp.li/resize/728x/jpg/c9c/f5f/3ef7c9553d8303a7a988562559.jpg"
+    },
+    {
+      "id": "monstera",
+      "name": {
+        "es": "Monstera",
+        "en": "Monstera"
+      },
+      "imageUrl": "https://i0.wp.com/foodandpleasure.com/wp-content/uploads/2024/04/plantas-interior-sansevieria-foto-shutterstock.jpg?fit=1500%2C1000&ssl=1"
+    },
+    {
+      "id": "lavender",
+      "name": {
+        "es": "Lavanda",
+        "en": "Lavender"
+      },
+      "imageUrl": "https://s2.glbimg.com/im5Ps3qcxoe0EiXzomfkEaTTDhQ=/e.glbimg.com/og/ed/f/original/2021/08/15/640px-paphiopedilum_rothschildianum_orquidia-kinabalu-dick_culbert-wikimedia.jpeg"
+    }
+  ],
+  "plants": [
+    {
+      "id": "1",
+      "name": "Sofi",
+      "type": "Lavanda",
+      "sowingDate": "2025-03-10",
+      "sensorCode": "PLANTA-001-ESP32",
+      "imageUrl": "https://img.freepik.com/foto-gratis/plantas-interior-estudio_23-2151022099.jpg?semt=ais_hybrid&w=740&q=80",
+      "lastReviewDays": 5,
+      "alertLevel": "ok",
+      "statusLabel": "Funcional",
+      "sensorModel": "Soil Moisture Sensor",
+      "reportsUrl": "https://example.com/report/sofi",
+      "metrics": {
+        "soilHumidity": 42,
+        "ambientTemperature": 21,
+        "batteryLevel": 97,
+        "soilPh": 6.4,
+        "conductivity": 280,
+        "state": "optimal"
+      }
+    },
+    {
+      "id": "2",
+      "name": "Maria",
+      "type": "Albahaca",
+      "sowingDate": "2025-02-20",
+      "sensorCode": "PLANTA-002-ESP32",
+      "imageUrl": "https://www.hola.com/horizon/landscape/df6dfca02bf6-adobestock357293965.jpg",
+      "lastReviewDays": 3,
+      "alertLevel": "warning",
+      "statusLabel": "Revisión pendiente",
+      "sensorModel": "DHT22",
+      "reportsUrl": "https://example.com/report/maria",
+      "metrics": {
+        "soilHumidity": 28,
+        "ambientTemperature": 24,
+        "batteryLevel": 82,
+        "soilPh": 6.1,
+        "conductivity": 340,
+        "state": "warning"
+      }
+    },
+    {
+      "id": "3",
+      "name": "Gaia",
+      "type": "Monstera",
+      "sowingDate": "2024-11-15",
+      "sensorCode": "PLANTA-003-ESP32",
+      "imageUrl": "https://i0.wp.com/foodandpleasure.com/wp-content/uploads/2024/04/plantas-interior-sansevieria-foto-shutterstock.jpg?fit=1500%2C1000&ssl=1",
+      "lastReviewDays": 12,
+      "alertLevel": "critical",
+      "statusLabel": "Alerta de humedad",
+      "sensorModel": "SensNode-LoRaWAN Soils",
+      "reportsUrl": "https://example.com/report/gaia",
+      "metrics": {
+        "soilHumidity": 18,
+        "ambientTemperature": 26,
+        "batteryLevel": 76,
+        "soilPh": 5.8,
+        "conductivity": 410,
+        "state": "critical"
+      }
+    },
+    {
+      "id": "4",
+      "name": "Vida",
+      "type": "Helecho",
+      "sowingDate": "2024-12-02",
+      "sensorCode": "PLANTA-004-ESP32",
+      "imageUrl": "https://wl-genial.cf.tsp.li/resize/728x/jpg/c9c/f5f/3ef7c9553d8303a7a988562559.jpg",
+      "lastReviewDays": 9,
+      "alertLevel": "warning",
+      "statusLabel": "Sensor calibrando",
+      "sensorModel": "NPK+EC Soil Sensor",
+      "reportsUrl": "https://example.com/report/vida",
+      "metrics": {
+        "soilHumidity": 33,
+        "ambientTemperature": 23,
+        "batteryLevel": 88,
+        "soilPh": 6.7,
+        "conductivity": 365,
+        "state": "warning"
+      }
+    },
+    {
+      "id": "5",
+      "name": "Aurola",
+      "type": "Suculenta",
+      "sowingDate": "2024-08-21",
+      "sensorCode": "PLANTA-005-ESP32",
+      "imageUrl": "https://img.freepik.com/foto-gratis/plantas-interior-estudio_23-2151022099.jpg?semt=ais_hybrid&w=740&q=80",
+      "lastReviewDays": 6,
+      "alertLevel": "ok",
+      "statusLabel": "Funcional",
+      "sensorModel": "LS-PH LoRaWAN",
+      "reportsUrl": "https://example.com/report/aurola",
+      "metrics": {
+        "soilHumidity": 24,
+        "ambientTemperature": 27,
+        "batteryLevel": 92,
+        "soilPh": 6.9,
+        "conductivity": 290,
+        "state": "optimal"
+      }
+    },
+    {
+      "id": "6",
+      "name": "Luz",
+      "type": "Helecho",
+      "sowingDate": "2025-09-20",
+      "sensorCode": "PLANTA-006-ESP32",
+      "imageUrl": "https://s2.glbimg.com/im5Ps3qcxoe0EiXzomfkEaTTDhQ=/e.glbimg.com/og/ed/f/original/2021/08/15/640px-paphiopedilum_rothschildianum_orquidia-kinabalu-dick_culbert-wikimedia.jpeg",
+      "lastReviewDays": 0,
+      "alertLevel": "ok",
+      "statusLabel": "Funcional",
+      "sensorModel": "Dragino NSPH01",
+      "reportsUrl": "https://example.com/report/luz",
+      "metrics": {
+        "soilHumidity": 40,
+        "ambientTemperature": 22,
+        "batteryLevel": 98,
+        "soilPh": 6.5,
+        "conductivity": 305,
+        "state": "optimal"
+      }
+    },
+    {
+      "id": "2a6b",
+      "name": "Retama",
+      "type": "Monstera",
+      "sowingDate": "2025-10-10",
+      "sensorCode": "45678",
+      "imageUrl": "https://wl-genial.cf.tsp.li/resize/728x/jpg/c9c/f5f/3ef7c9553d8303a7a988562559.jpg",
+      "statusLabel": "Nueva planta",
+      "alertLevel": "ok",
+      "lastReviewDays": 0,
+      "sensorModel": "Monstera",
+      "reportsUrl": "https://example.com/report/retama",
+      "metrics": {
+        "soilHumidity": 40,
+        "ambientTemperature": 22,
+        "batteryLevel": 95,
+        "soilPh": 6.5,
+        "conductivity": 320,
+        "state": "optimal"
+      }
+    }
+  ]
+}

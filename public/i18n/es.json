@@ -1,0 +1,169 @@
+{
+  "common": {
+    "back": "Volver",
+    "cancel": "Cancelar",
+    "save": "Guardar",
+    "continue": "Continuar"
+  },
+  "shell": {
+    "add-plant": "Añadir plantas",
+    "dashboard": "Resumen",
+    "my-plants": "Mis plantas",
+    "manage-plants": "Gestión",
+    "settings": "Opciones",
+    "profile": "Perfil",
+    "brand-alt": "Logotipo de Flor con una planta real"
+  },
+  "dashboard": {
+    "welcome-title": "Bienvenido <strong>{{ name }}</strong>!",
+    "subtitle": "Mantén tus plantas conectadas saludables y felices.",
+    "member-since": "Miembro desde",
+    "subscription": "Tipo de cuenta",
+    "summary": {
+      "title": "Resumen",
+      "subtitle": "Controla rápidamente la salud de tu ecosistema",
+      "plants": "Plantas",
+      "tasks": "Tareas",
+      "alerts": "Alertas",
+      "photos": "Fotos"
+    }
+  },
+  "settings": {
+    "title": "Opciones",
+    "subtitle": "Personaliza tus notificaciones y preferencias",
+    "language": {
+      "title": "Idioma",
+      "es": "Es",
+      "en": "En"
+    },
+    "theme": {
+      "title": "Modo de luz",
+      "day": "Día",
+      "night": "Noche"
+    },
+    "notifications": {
+      "title": "Notificaciones",
+      "sms": "Mensajes de texto",
+      "email": "Correo electrónico",
+      "calls": "Llamadas",
+      "social": "Redes sociales"
+    },
+    "alarm": {
+      "title": "Tipo de alarma",
+      "label": "Selecciona un sonido"
+    }
+  },
+  "profile": {
+    "title": "Información del usuario",
+    "first-name": "Nombres",
+    "last-name": "Apellidos",
+    "username": "Usuario",
+    "email": "Correo electrónico",
+    "joined": "Fecha de inscripción",
+    "subscription": "Plan",
+    "photo-url": "URL de la foto de perfil",
+    "photo-url-hint": "Pega un enlace directo a tu avatar",
+    "photo-url-error": "Ingresa una URL válida",
+    "save": "Guardar perfil",
+    "success": "¡Perfil actualizado correctamente!",
+    "error": "Tuvimos un problema al actualizar tu perfil."
+  },
+  "add-plant": {
+    "title": "Añadir plantas",
+    "subtitle": "Conecta una nueva planta inteligente a tu invernadero",
+    "name": "Nombre de la planta",
+    "type": "Tipo de planta",
+    "sowing-date": "Fecha de siembra",
+    "sensor-code": "Código de sensor IoT",
+    "image-url": "URL de la imagen",
+    "image-url-hint": "Copia un enlace directo a la foto (https://...)",
+    "image-url-error": "Escribe un enlace válido que comience con http o https",
+    "new-status": "Nueva planta",
+    "success": {
+      "title": "¡Planta creada exitosamente!",
+      "message": "La planta se agregó a tu colección de manera segura."
+    },
+    "error": {
+      "title": "Ups... parece que hubo un error",
+      "message": "No pudimos guardar la planta. Intenta nuevamente."
+    }
+  },
+  "plant-list": {
+    "title": "Mis plantas",
+    "subtitle": "Supervisa rápidamente tus cultivos conectados",
+    "last-review": "Última revisión: {{ days }} días"
+  },
+  "plant-detail": {
+    "title": "Planta: {{ name }}",
+    "subtitle": "Actualiza la información y mantiene el monitoreo al día",
+    "delete": "Eliminar planta",
+    "delete-error": "No pudimos borrar la planta. Intenta nuevamente.",
+    "sensor": "Conector IoT: {{ code }}",
+    "edit-title": "Editar información de la planta",
+    "form": {
+      "name": "Nombre",
+      "type": "Tipo",
+      "sowing-date": "Fecha de siembra",
+      "sensor-code": "Código del sensor",
+      "status-label": "Estado visible",
+      "image-url": "URL de la imagen",
+      "image-url-hint": "Usa un enlace de foto en línea (https://...)",
+      "image-url-error": "Proporciona una URL válida",
+      "reports-url": "URL de reportes",
+      "reports-url-error": "Ingresa un enlace válido a los reportes",
+      "save": "Guardar cambios",
+      "success": "¡Planta actualizada correctamente!",
+      "error": "No pudimos actualizar la planta. Revisa los campos e inténtalo otra vez."
+    },
+    "metrics": {
+      "title": "Métricas",
+      "soil-humidity": "Humedad del suelo (%)",
+      "ambient-temperature": "Temperatura ambiente (°C)",
+      "battery": "Batería",
+      "ph": "pH del suelo",
+      "conductivity": "Conductividad (µS)"
+    }
+  },
+  "plant-management": {
+    "title": "Gestión de plantas",
+    "sort": {
+      "label": "Ordenar por",
+      "name": "Nombre",
+      "critical": "Plantas más críticas",
+      "recent": "Plantas recientes",
+      "active": "Sensores más activos"
+    },
+    "columns": {
+      "name": "Nombres",
+      "sensor": "Sensores",
+      "alert": "Alertas!",
+      "report": "Reportes"
+    },
+    "view-report": "Ver reporte"
+  },
+  "auth": {
+    "login": {
+      "title": "Bienvenido de nuevo",
+      "subtitle": "Inicia sesión para seguir cuidando tus plantas conectadas.",
+      "username": "Usuario",
+      "password": "Contraseña",
+      "submit": "Ingresar",
+      "register-hint": "¿Aún no tienes cuenta?",
+      "register-link": "Crear una cuenta",
+      "error": "Credenciales inválidas, intenta nuevamente."
+    },
+    "register": {
+      "title": "Crear cuenta",
+      "subtitle": "Registra tus datos para sincronizar tu invernadero inteligente.",
+      "firstName": "Nombres",
+      "lastName": "Apellidos",
+      "email": "Correo electrónico",
+      "username": "Usuario",
+      "password": "Contraseña",
+      "submit": "Registrar",
+      "login-hint": "¿Ya tienes cuenta?",
+      "login-link": "Inicia sesión",
+      "error": "No pudimos registrar la cuenta. Intenta nuevamente."
+    }
+  }
+}

@@ -1,0 +1,35 @@
+<header class="topbar">
+  <div class="topbar__section topbar__section--start">
+    <a class="primary-button" routerLink="/plants/add">{{ 'shell.add-plant' | translate }}</a>
+    <nav class="icon-nav" aria-label="Main navigation">
+      <a routerLink="/dashboard" routerLinkActive="active" aria-label="{{ 'shell.dashboard' | translate }}">
+        <span aria-hidden="true" class="material-symbols-outlined">dashboard</span>
+      </a>
+      <a routerLink="/plants/list" routerLinkActive="active" aria-label="{{ 'shell.my-plants' | translate }}">
+        <span aria-hidden="true" class="material-symbols-outlined">yard</span>
+      </a>
+      <a routerLink="/plants/manage" routerLinkActive="active" aria-label="{{ 'shell.manage-plants' | translate }}">
+        <span aria-hidden="true" class="material-symbols-outlined">monitor_heart</span>
+      </a>
+    </nav>
+  </div>
+  <div class="topbar__section topbar__section--brand">
+    <figure class="brand-emblem">
+      <img
+        src="https://www.hola.com/horizon/landscape/df6dfca02bf6-adobestock357293965.jpg"
+        alt="{{ 'shell.brand-alt' | translate }}"
+      />
+    </figure>
+  </div>
+  <div class="topbar__section topbar__section--end">
+    <a class="icon-button" routerLink="/settings" aria-label="{{ 'shell.settings' | translate }}">
+      <span aria-hidden="true" class="material-symbols-outlined">settings</span>
+    </a>
+    <a class="icon-button" routerLink="/profile" aria-label="{{ 'shell.profile' | translate }}">
+      <span aria-hidden="true" class="material-symbols-outlined">account_circle</span>
+    </a>
+  </div>
+</header>
+<main class="content-area">
+  <router-outlet />
+</main>
