@@ -1,0 +1,62 @@
+<section class="profile" *ngIf="profile$ | async as profile">
+  <a class="back-button" routerLink="/dashboard">
+    <span aria-hidden="true" class="material-symbols-outlined">arrow_back</span>
+    {{ 'common.back' | translate }}
+  </a>
+
+  <form class="profile__grid" [formGroup]="form" (ngSubmit)="submit(profile)">
+    <aside class="profile__photo">
+      <img [src]="form.value.photoUrl || profile.photoUrl" [alt]="profile.firstName" />
+      <label>
+        <span>{{ 'profile.photo-url' | translate }}</span>
+        <input type="url" formControlName="photoUrl" placeholder="https://" />
+        <small class="field-hint">{{ 'profile.photo-url-hint' | translate }}</small>
+        <p class="field-error" *ngIf="form.get('photoUrl')?.touched && form.get('photoUrl')?.invalid">
+          {{ 'profile.photo-url-error' | translate }}
+        </p>
+      </label>
+    </aside>
+
+    <section class="profile__details">
+      <header>
+        <h1>{{ 'profile.title' | translate }}</h1>
+        <span class="profile__joined">{{ 'profile.joined' | translate }}: {{ profile.joinDate | date:'longDate' }}</span>
+      </header>
+
+      <div class="profile__fields">
+        <label>
+          <span>{{ 'profile.first-name' | translate }}</span>
+          <input type="text" formControlName="firstName" />
+        </label>
+        <label>
+          <span>{{ 'profile.last-name' | translate }}</span>
+          <input type="text" formControlName="lastName" />
+        </label>
+        <label>
+          <span>{{ 'profile.username' | translate }}</span>
+          <input type="text" formControlName="username" />
+        </label>
+        <label>
+          <span>{{ 'profile.email' | translate }}</span>
+          <input type="email" formControlName="email" />
+        </label>
+        <label>
+          <span>{{ 'profile.subscription' | translate }}</span>
+          <input type="text" formControlName="subscriptionLevel" />
+        </label>
+      </div>
+
+      <footer class="profile__actions">
+        <button type="button" class="secondary" (click)="resetForm(profile)">
+          {{ 'common.cancel' | translate }}
+        </button>
+        <button type="submit" class="primary" [disabled]="status() === 'saving'">
+          <span aria-hidden="true" class="material-symbols-outlined" *ngIf="status() === 'saving'">progress_activity</span>
+          <span>{{ 'profile.save' | translate }}</span>
+        </button>
+      </footer>
+      <p class="status-message status-message--success" *ngIf="status() === 'success'">{{ 'profile.success' | translate }}</p>
+      <p class="status-message status-message--error" *ngIf="status() === 'error'">{{ 'profile.error' | translate }}</p>
+    </section>
+  </form>
+</section>
