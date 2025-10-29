@@ -1,0 +1,27 @@
+<section class="auth">
+  <aside class="auth__illustration" aria-hidden="true"></aside>
+  <div class="auth__form">
+    <h1>{{ 'auth.login.title' | translate }}</h1>
+    <p>{{ 'auth.login.subtitle' | translate }}</p>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <label>
+        <span>{{ 'auth.login.username' | translate }}</span>
+        <input type="text" formControlName="username" />
+      </label>
+      <label>
+        <span>{{ 'auth.login.password' | translate }}</span>
+        <input type="password" formControlName="password" />
+      </label>
+
+      <p *ngIf="error() as message" class="error">{{ message | translate }}</p>
+
+      <button type="submit">{{ 'auth.login.submit' | translate }}</button>
+    </form>
+
+    <p class="auth__footer">
+      {{ 'auth.login.register-hint' | translate }}
+      <a routerLink="/auth/register">{{ 'auth.login.register-link' | translate }}</a>
+    </p>
+  </div>
+</section>

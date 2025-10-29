@@ -1,0 +1,90 @@
+.auth {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0c2a3a 0%, #1f612f 100%);
+  color: #fff;
+}
+
+.auth__illustration {
+  background-image: url('https://i0.wp.com/foodandpleasure.com/wp-content/uploads/2024/04/plantas-interior-sansevieria-foto-shutterstock.jpg?fit=1500%2C1000&ssl=1');
+  background-size: cover;
+  background-position: left center;
+  background-repeat: no-repeat;
+  min-height: 100%;
+}
+
+.auth__form {
+  padding: clamp(2rem, 6vw, 6rem);
+  display: grid;
+  gap: 1.5rem;
+  align-content: center;
+}
+
+@media (max-width: 768px) {
+  .auth {
+    grid-template-columns: 1fr;
+  }
+
+  .auth__illustration {
+    min-height: 40vh;
+    background-position: 25% center;
+  }
+
+  .auth__form {
+    padding: clamp(1.5rem, 6vw, 3rem);
+  }
+}
+
+.auth__form h1 {
+  font-size: clamp(2rem, 4vw, 2.8rem);
+  margin: 0;
+}
+
+.auth__form p {
+  margin: 0;
+  opacity: 0.85;
+}
+
+form {
+  display: grid;
+  gap: 1rem;
+}
+
+label {
+  display: grid;
+  gap: 0.5rem;
+  font-weight: 600;
+}
+
+input {
+  border-radius: 14px;
+  border: none;
+  padding: 0.9rem 1.1rem;
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+input:focus {
+  outline: 2px solid #8fd3ff;
+}
+
+button {
+  background: #28a745;
+  color: #fff;
+  font-weight: 700;
+  padding: 0.9rem;
+  border-radius: 999px;
+  border: none;
+}
+
+.error {
+  color: #ffb3b3;
+  font-weight: 600;
+}
+
+.auth__footer a {
+  color: #8fd3ff;
+  font-weight: 600;
+  text-decoration: none;
+}
