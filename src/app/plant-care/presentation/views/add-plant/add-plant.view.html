@@ -1,0 +1,67 @@
+<section class="add-plant" *ngIf="plantTypes$ | async as plantTypes">
+  <a class="back-button" routerLink="/plants/list">
+    <span aria-hidden="true" class="material-symbols-outlined">arrow_back</span>
+    {{ 'common.back' | translate }}
+  </a>
+
+  <header>
+    <h1>{{ 'add-plant.title' | translate }}</h1>
+    <p>{{ 'add-plant.subtitle' | translate }}</p>
+  </header>
+
+  <div class="add-plant__grid">
+    <form [formGroup]="form" (ngSubmit)="submit()" novalidate>
+      <label>
+        <span>{{ 'add-plant.name' | translate }}</span>
+        <input type="text" formControlName="name" />
+      </label>
+      <label>
+        <span>{{ 'add-plant.type' | translate }}</span>
+        <select formControlName="type">
+          <option *ngFor="let type of plantTypes" [value]="type.id">
+            {{ getPreviewName(type) }}
+          </option>
+        </select>
+      </label>
+      <label>
+        <span>{{ 'add-plant.sowing-date' | translate }}</span>
+        <input type="date" formControlName="sowingDate" />
+      </label>
+      <label>
+        <span>{{ 'add-plant.sensor-code' | translate }}</span>
+        <input type="text" formControlName="sensorCode" />
+      </label>
+      <label>
+        <span>{{ 'add-plant.image-url' | translate }}</span>
+        <input type="url" formControlName="imageUrl" placeholder="https://" />
+        <small class="field-hint">{{ 'add-plant.image-url-hint' | translate }}</small>
+        <p class="field-error" *ngIf="form.get('imageUrl')?.touched && form.get('imageUrl')?.invalid">
+          {{ 'add-plant.image-url-error' | translate }}
+        </p>
+      </label>
+      <footer>
+        <button type="button" class="ghost" routerLink="/plants/list">{{ 'common.cancel' | translate }}</button>
+        <button type="submit" class="primary">{{ 'common.save' | translate }}</button>
+      </footer>
+    </form>
+
+    <aside class="preview" *ngIf="selectedType() as type">
+      <figure>
+        <img [src]="getPreviewImage(type)" [alt]="getPreviewName(type)" />
+        <figcaption>{{ getPreviewName(type) }}</figcaption>
+      </figure>
+    </aside>
+  </div>
+
+  <div class="overlay" *ngIf="status() !== 'idle'">
+    <div class="overlay__content" [class.overlay__content--success]="status() === 'success'" [class.overlay__content--error]="status() === 'error'">
+      <div class="overlay__icon" aria-hidden="true">
+        <span class="material-symbols-outlined" *ngIf="status() === 'success'">psychiatry</span>
+        <span class="material-symbols-outlined" *ngIf="status() === 'error'">yard</span>
+      </div>
+      <h2>{{ ('add-plant.' + status() + '.title') | translate }}</h2>
+      <p>{{ ('add-plant.' + status() + '.message') | translate }}</p>
+      <button type="button" (click)="resetStatus()">{{ 'common.continue' | translate }}</button>
+    </div>
+  </div>
+</section>
