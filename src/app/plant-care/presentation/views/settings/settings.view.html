@@ -1,0 +1,69 @@
+<section class="settings" *ngIf="settings$ | async as settings">
+  <a class="back-button" routerLink="/dashboard">
+    <span aria-hidden="true" class="material-symbols-outlined">arrow_back</span>
+    {{ 'common.back' | translate }}
+  </a>
+
+  <header class="settings__header">
+    <h1>{{ 'settings.title' | translate }}</h1>
+    <p>{{ 'settings.subtitle' | translate }}</p>
+  </header>
+
+  <form [formGroup]="form" class="settings__form">
+    <fieldset>
+      <legend>{{ 'settings.language.title' | translate }}</legend>
+      <div class="language-toggle" role="group" aria-label="{{ 'settings.language.title' | translate }}">
+        <button type="button" [class.is-active]="form.value.language === 'es'" (click)="selectLanguage('es')">
+          {{ 'settings.language.es' | translate }}
+        </button>
+        <button type="button" [class.is-active]="form.value.language === 'en'" (click)="selectLanguage('en')">
+          {{ 'settings.language.en' | translate }}
+        </button>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>{{ 'settings.theme.title' | translate }}</legend>
+      <div class="theme-toggle">
+        <button type="button" [class.is-active]="form.value.theme === 'day'" (click)="toggleTheme('day')">
+          <span aria-hidden="true" class="material-symbols-outlined">light_mode</span>
+          {{ 'settings.theme.day' | translate }}
+        </button>
+        <button type="button" [class.is-active]="form.value.theme === 'night'" (click)="toggleTheme('night')">
+          <span aria-hidden="true" class="material-symbols-outlined">dark_mode</span>
+          {{ 'settings.theme.night' | translate }}
+        </button>
+      </div>
+    </fieldset>
+
+    <fieldset formGroupName="notifications">
+      <legend>{{ 'settings.notifications.title' | translate }}</legend>
+      <label>
+        <input type="checkbox" formControlName="sms" />
+        {{ 'settings.notifications.sms' | translate }}
+      </label>
+      <label>
+        <input type="checkbox" formControlName="email" />
+        {{ 'settings.notifications.email' | translate }}
+      </label>
+      <label>
+        <input type="checkbox" formControlName="phoneCall" />
+        {{ 'settings.notifications.calls' | translate }}
+      </label>
+      <label>
+        <input type="checkbox" formControlName="socialMedia" />
+        {{ 'settings.notifications.social' | translate }}
+      </label>
+    </fieldset>
+
+    <fieldset formGroupName="alarm">
+      <legend>{{ 'settings.alarm.title' | translate }}</legend>
+      <label class="select-wrapper">
+        <span>{{ 'settings.alarm.label' | translate }}</span>
+        <select formControlName="type">
+          <option *ngFor="let option of settings.alarm.options" [value]="option">{{ option }}</option>
+        </select>
+      </label>
+    </fieldset>
+  </form>
+</section>

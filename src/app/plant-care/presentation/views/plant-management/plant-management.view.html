@@ -1,0 +1,43 @@
+<section class="plant-management" *ngIf="plants$ | async as plants">
+  <a class="back-button" routerLink="/plants/list">
+    <span aria-hidden="true" class="material-symbols-outlined">arrow_back</span>
+    {{ 'common.back' | translate }}
+  </a>
+
+  <header>
+    <h1>{{ 'plant-management.title' | translate }}</h1>
+    <div class="sort">
+      <button type="button">{{ 'plant-management.sort.label' | translate }}</button>
+      <ul>
+        <li *ngFor="let option of options">
+          <button type="button" (click)="selectSort(option.id)">{{ option.label | translate }}</button>
+        </li>
+      </ul>
+    </div>
+  </header>
+
+  <div class="table-wrapper">
+    <table>
+      <thead>
+        <tr>
+          <th>{{ 'plant-management.columns.name' | translate }}</th>
+          <th>{{ 'plant-management.columns.sensor' | translate }}</th>
+          <th>{{ 'plant-management.columns.alert' | translate }}</th>
+          <th>{{ 'plant-management.columns.report' | translate }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let plant of plants; trackBy: trackById">
+          <td>
+            <a [routerLink]="['/plants', plant.id]">{{ plant.name }}</a>
+          </td>
+          <td>{{ plant.sensorModel }}</td>
+          <td>
+            <span class="status" [class]="'status--' + plant.alertLevel"></span>
+          </td>
+          <td><a [href]="plant.reportsUrl" target="_blank" rel="noopener">{{ 'plant-management.view-report' | translate }}</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
