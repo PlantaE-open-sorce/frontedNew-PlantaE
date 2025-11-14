@@ -1,0 +1,563 @@
+{
+  "common": {
+    "generic": {
+      "na": "N/A",
+      "none": "—",
+      "loading": "Loading..."
+    },
+    "readings": {
+      "eyebrow": "History",
+      "title": "Recent readings",
+      "sensor": "Sensor",
+      "close": "Close",
+      "metric": "Metric",
+      "value": "Value",
+      "timestamp": "Date",
+      "quality": "Quality",
+      "empty": "No readings yet.",
+      "view": "View readings"
+    },
+    "actions": {
+      "back": "Back"
+    },
+    "aria": {
+      "languageSwitcher": "Language selector"
+    }
+  },
+  "iam": {
+    "login.title": "Sign in",
+    "login.subtitle": "Enter your credentials to continue.",
+    "login.eyebrow": "Welcome back",
+    "login.email": "Email",
+    "login.password": "Password",
+    "login.action": "Log in",
+    "login.noAccount": "Don't have an account?",
+    "login.register": "Create one",
+    "login.forgot": "Forgot your password?",
+    "login.benefits.health": "Monitor the health of your crops",
+    "login.benefits.analytics": "Visualize clear analytics",
+    "login.benefits.alerts": "Receive smart alerts",
+    "login.hero.quote": "“Happy plants start with clear data.”",
+    "login.stats.devices": "Active devices",
+    "login.stats.success": "Alerts resolved",
+    "login.stats.monitoring": "Continuous monitoring",
+    "register.title": "Create account",
+    "register.subtitle": "Complete your information to get started.",
+    "register.eyebrow": "Get started free",
+    "register.displayName": "Display name",
+    "register.email": "Email",
+    "register.password": "Password",
+    "register.confirmPassword": "Confirm password",
+    "register.language": "Language",
+    "register.accountType": "Account type",
+    "register.action": "Sign up",
+    "register.types.home": "Standard user",
+    "register.types.nursery": "Nursery grower",
+    "accountTypes.home": "Standard user",
+    "accountTypes.nursery": "Nursery grower",
+    "register.perks.title": "Includes",
+    "register.perks.analytics": "Dashboards and custom alerts",
+    "register.perks.team": "Unlimited team members",
+    "register.perks.security": "Secure data storage",
+    "register.hero.title": "Plan your greenhouse",
+    "register.hero.subtitle": "Create teams, assign devices and share dashboards with your crew.",
+    "register.stats.setup": "Average setup time",
+    "register.stats.savings": "Water savings",
+    "password": {
+      "title": "Change password",
+      "current": "Current password",
+      "new": "New password",
+      "action": "Update",
+      "error": "We couldn't change the password"
+    },
+    "forgot": {
+      "title": "Recover password",
+      "subtitle": "We will send instructions if the email exists.",
+      "email": "Email",
+      "action": "Send",
+      "error": "We couldn't process the request"
+    }
+  },
+  "layout": {
+    "menu.home": "Home",
+    "menu.dashboard": "Dashboard",
+    "menu.plants": "Plants",
+    "menu.sensors": "Sensors",
+    "menu.management": "Management",
+    "menu.nursery": "Nursery",
+    "menu.alerts": "Alerts",
+    "menu.reports": "Reports",
+    "menu.devices": "Devices",
+    "menu.profile": "Profile",
+    "menu.logout": "Sign out",
+    "aria": {
+      "closeSidebar": "Close navigation",
+      "openSidebar": "Open navigation"
+    }
+  },
+  "home": {
+    "intro": "Welcome to PlantaE",
+    "description": "Manage plants, sensors and reports from a single place.",
+    "eyebrow": "Connected ecosystems",
+    "actions.create": "Create your account",
+    "actions.learn": "Learn more",
+    "actions.dashboard": "Go to my plants",
+    "metrics.devices": "Connected sensors",
+    "metrics.events": "Events processed",
+    "metrics.savings": "Resource savings",
+    "features.title": "Everything you need to grow with precision",
+    "features.monitoring.title": "Realtime monitoring",
+    "features.monitoring.copy": "Track humidity, temperature and nutrition without leaving the dashboard.",
+    "features.automation.title": "Smart automation",
+    "features.automation.copy": "Set rules for irrigation and fertilizing based on actual data.",
+    "features.collaboration.title": "Secure collaboration",
+    "features.collaboration.copy": "Share reports and alerts with your team or clients in seconds."
+  },
+  "about": {
+    "title": "About PlantaE",
+    "description": "Platform to monitor crop health, connect IoT sensors, manage alerts and generate automated reports."
+  },
+  "dashboard": {
+    "eyebrow": "Daily overview",
+    "title": "You have no registered plants",
+    "subtitle": "Rotate your pots for uniform growth.",
+    "empty": "Register your first plant to see it here.",
+    "manual": {
+      "title": "Log manual action",
+      "type": "Type",
+      "typePlaceholder": "Watering, Fertilizing...",
+      "notes": "Notes",
+      "notesPlaceholder": "Additional observations",
+      "datetime": "Date and time",
+      "duration": "Duration (min)",
+      "action": "Log action"
+    },
+    "recent": {
+      "title": "Latest actions",
+      "noNotes": "No notes",
+      "empty": "You haven't logged actions yet."
+    }
+  },
+  "plants": {
+    "list": {
+      "title": "Registered plants",
+      "subtitle": "Manage your crops from a single place.",
+      "add": "Add plant",
+      "filters": {
+        "name": "Name",
+        "species": "Species",
+        "status": {
+          "all": "All",
+          "active": "Active",
+          "inactive": "Inactive",
+          "alert": "Needs attention"
+        },
+        "search": "Search",
+        "clear": "Clear",
+        "helper": "Combine filters to quickly find plants."
+      },
+      "actions": {
+        "refresh": "Refresh list"
+      },
+      "sensor": "Sensor",
+      "device": "Device",
+      "unassigned": "Unassigned",
+      "view": "View details",
+      "loading": "Loading...",
+      "empty": "We couldn't find plants with those filters.",
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "page": "Page",
+        "of": "of"
+      },
+      "status": {
+        "active": "Active",
+        "inactive": "Inactive",
+        "healthy": "Healthy",
+        "alert": "Needs attention",
+        "unknown": "Unknown"
+      }
+    },
+    "add": {
+      "eyebrow": "New crop",
+      "title": "Register plant",
+      "subtitle": "Complete the details to start monitoring.",
+      "fields": {
+        "name": "Name",
+        "namePlaceholder": "Ex. Ficus Lyrata",
+        "species": "Species",
+        "speciesPlaceholder": "Botanical name",
+        "device": "Device",
+        "devicePlaceholder": "Optional",
+        "sensor": "Sensor",
+        "sensorPlaceholder": "Optional"
+      },
+      "actions": {
+        "save": "Save"
+      }
+    },
+    "detail": {
+      "fields": {
+        "species": "Species:",
+        "sensor": "Sensor:",
+        "device": "Device:",
+        "created": "Created:"
+      },
+      "unassigned": "Unassigned",
+      "status": {
+        "unknown": "No status"
+      },
+      "alerts": {
+        "title": "Alerts",
+        "active": "active",
+        "loading": "Loading alerts...",
+        "empty": "No recent alerts.",
+        "value": "Value:",
+        "status": {
+          "open": "Open",
+          "acknowledged": "Acknowledged",
+          "resolved": "Resolved"
+        }
+      },
+      "notFound": "We couldn't find the requested plant."
+    },
+    "management": {
+      "eyebrow": "Collection",
+      "title": "Plant management",
+      "actions": {
+        "add": "Add plant",
+        "view": "View",
+        "delete": "Delete"
+      },
+      "table": {
+        "name": "Name",
+        "status": "Status",
+        "alerts": "Alerts",
+        "actions": "Actions"
+      },
+      "alerts": {
+        "yes": "Yes",
+        "no": "No"
+      },
+      "empty": "No plants registered.",
+      "confirmDelete": "Delete this plant?"
+    }
+  },
+  "alerts": {
+    "list": {
+      "eyebrow": "Monitoring",
+      "title": "Recent alerts",
+      "subtitle": "Review critical events and act fast.",
+      "actions": {
+        "refresh": "Refresh",
+        "reset": "Reset filters",
+        "resolve": "Mark as resolved"
+      },
+      "filters": {
+        "plant": "Plant",
+        "sensor": "Sensor",
+        "type": "Type",
+        "apply": "Filter",
+        "reset": "Clear"
+      },
+      "meta": {
+        "plant": "Plant:",
+        "sensor": "Sensor:"
+      },
+      "empty": "No alerts.",
+      "pagination": {
+        "previous": "Previous",
+        "next": "Next",
+        "page": "Page"
+      }
+    },
+    "status": {
+      "open": "Open",
+      "acknowledged": "Acknowledged",
+      "resolved": "Resolved",
+      "unknown": "Unknown"
+    }
+  },
+  "devices": {
+    "eyebrow": "Hardware",
+    "title": "Devices",
+    "subtitle": "Register gateways or hubs and assign them to plants.",
+    "fields": {
+      "deviceId": "Device ID",
+      "ownerId": "Owner",
+      "hwModel": "Hardware model",
+      "secret": "Secret (optional)",
+      "lookupId": "Lookup device",
+      "note": "Note",
+      "plantId": "Plant ID",
+      "selectDevice": "Available devices",
+      "selectPlant": "Select a plant"
+    },
+    "actions": {
+      "register": "Register",
+      "deactivate": "Deactivate",
+      "load": "Load",
+      "updateNote": "Update note",
+      "link": "Link to plant",
+      "chooseDevice": "Choose a device"
+    },
+    "detail": {
+      "title": "Detail",
+      "id": "ID:",
+      "model": "Model:",
+      "status": "Status:",
+      "active": "Active",
+      "inactive": "Inactive",
+      "note": "Note:"
+    }
+  },
+  "sensors": {
+    "eyebrow": "Telemetry",
+    "title": "Sensors",
+    "subtitle": "Monitor health and recent activity.",
+    "hint": "Pick sensors and plants from the dropdowns to link them without typing IDs manually.",
+    "actions": {
+      "refresh": "Refresh"
+    },
+    "filters": {
+      "type": "Type",
+      "status": {
+        "all": "Status",
+        "active": "Active",
+        "inactive": "Inactive"
+      },
+      "plant": "Plant",
+      "apply": "Filter",
+      "reset": "Clear"
+    },
+    "table": {
+      "id": "ID",
+      "type": "Type",
+      "status": "Status",
+      "plant": "Plant",
+      "lastReading": "Last reading",
+      "actions": "Actions"
+    },
+    "empty": "No sensors registered",
+    "activity": {
+      "title": "Featured activity",
+      "readings": "readings"
+    },
+    "forms": {
+      "common": {
+        "sensorId": "Sensor ID",
+        "useSensor": "Use in forms"
+      },
+      "register": {
+        "title": "Register sensor",
+        "type": "Type",
+        "ownerId": "Owner",
+      "plantId": "Plant (optional)",
+      "chooseType": "Choose a type",
+      "subtitle": "Create a sensor and optionally assign it to a plant.",
+      "action": "Register"
+    },
+    "link": {
+      "title": "Link sensor",
+      "plantId": "Plant ID",
+      "action": "Link",
+      "chooseSensor": "Choose a sensor",
+      "choosePlant": "Choose a plant",
+      "subtitle": "Connect an existing sensor to one of your plants."
+    },
+    "deactivate": {
+      "title": "Deactivate sensor",
+      "subtitle": "Stop collecting data temporarily.",
+      "action": "Deactivate"
+    },
+    "ingest": {
+      "title": "Log reading",
+      "metric": "Metric",
+      "value": "Value",
+      "timestamp": "Timestamp",
+      "quality": "Quality",
+      "subtitle": "Send manual readings for tests or calibrations.",
+      "action": "Send reading"
+    },
+    "types": {
+      "soil": "Soil",
+      "temperature": "Temperature",
+      "humidity": "Humidity",
+      "light": "Light",
+      "multi": "Multi"
+    },
+    "metrics": {
+      "soilMoisture": "Soil moisture",
+      "temperature": "Temperature",
+      "humidity": "Humidity",
+      "light": "Light"
+    }
+  },
+    "status": {
+      "active": "Active",
+      "inactive": "Inactive",
+      "unknown": "Unknown"
+    }
+  },
+  "profile": {
+    "account": {
+      "eyebrow": "Your account",
+      "title": "Personal information",
+      "description": "Keep your time zone, language, and name aligned across PlantaE."
+    },
+    "public": {
+      "eyebrow": "Presence",
+      "title": "Public profile",
+      "description": "Organize what others will see when sharing your public link.",
+      "share": "Share your link",
+      "loading": "Loading profile...",
+      "notFound": "We couldn't find this profile."
+    },
+    "fields": {
+      "fullName": "Full name",
+      "timezone": "Time zone",
+      "language": "Language",
+      "displayName": "Display name",
+      "slug": "Public slug",
+      "avatar": "Avatar URL",
+      "location": "Location",
+      "bio": "Bio"
+    },
+    "actions": {
+      "changePassword": "Change password",
+      "delete": "Delete account",
+      "saveAccount": "Save changes",
+      "savePublic": "Save public profile",
+      "confirmDelete": "This action will delete your account. Continue?"
+    },
+    "errors": {
+      "delete": "We couldn't delete the account",
+      "identify": "We couldn't identify your account"
+    }
+  },
+  "settings": {
+    "eyebrow": "Alerts and reminders",
+    "title": "Notifications",
+    "subtitle": "Configure quiet hours and preferred channels.",
+    "status": {
+      "saving": "Saving...",
+      "live": "Live"
+    },
+    "fields": {
+      "quietStart": "Quiet hours start",
+      "quietEnd": "Quiet hours end",
+      "digest": "Digest time",
+      "digestHint": "You'll receive a daily summary",
+      "format": "24h format"
+    },
+    "preferences": {
+      "hint": "Choose how you want to be informed.",
+      "email": "Email",
+      "inApp": "In-app"
+    },
+    "actions": {
+      "save": "Save changes"
+    }
+  },
+  "reports": {
+    "eyebrow": "Historical data",
+    "title": "Reports",
+    "subtitle": "Download PDF or CSV reports for your plants or an overall summary.",
+    "fields": {
+      "plant": "Plant (required for PDF/CSV)",
+      "selectPlant": "Select a plant",
+      "from": "From",
+      "to": "To",
+      "metrics": "Metrics"
+    },
+    "actions": {
+      "pdf": "Plant PDF",
+      "csv": "Plant CSV",
+      "summary": "Summary PDF"
+    },
+    "metrics": {
+      "temperature": "Temperature",
+      "humidity": "Humidity",
+      "soilMoisture": "Soil moisture",
+      "ph": "pH"
+    },
+    "errors": {
+      "invalidRange": "Select a valid date range",
+      "plantRequired": "Select a plant for PDF/CSV reports",
+      "generic": "We couldn't generate the report"
+    },
+    "messages": {
+      "success": "Report generated"
+    }
+  },
+  "nursery": {
+    "summary": {
+      "eyebrow": "Metrics",
+      "title": "Nursery dashboard",
+      "plants": "Active plants",
+      "batches": "Active batches",
+      "tasks": "Pending tasks"
+    },
+    "batches": {
+      "eyebrow": "Highlights",
+      "title": "Batches under watch",
+      "plants": "Plants",
+      "routine": "Routine",
+      "progress": "Progress",
+      "status": {
+        "onTrack": "On track",
+        "delayed": "Delayed",
+        "atRisk": "At risk"
+      }
+    },
+    "tasks": {
+      "eyebrow": "Operations",
+      "title": "Critical tasks",
+      "refresh": "Refresh",
+      "empty": "No tasks assigned.",
+      "due": "Due",
+      "priority": {
+        "low": "Low",
+        "medium": "Medium",
+        "high": "High"
+      },
+      "form": {
+        "title": "Title",
+        "assetId": "Asset",
+        "assetType": "Asset type",
+        "assetPlant": "Plant",
+        "assetBatch": "Batch",
+        "priority": "Priority",
+        "dueDate": "Due date",
+        "notes": "Notes",
+        "action": "Add task"
+      }
+    },
+    "inputs": {
+      "eyebrow": "Inputs",
+      "title": "Recent applications",
+      "asset": "Asset",
+      "type": "Type",
+      "quantity": "Quantity",
+      "cost": "Cost",
+      "appliedAt": "Applied",
+      "empty": "No inputs registered.",
+      "form": {
+        "assetId": "Asset",
+        "assetType": "Asset type",
+        "inputType": "Input type",
+        "quantity": "Quantity",
+        "unit": "Unit",
+        "cost": "Cost",
+        "appliedAt": "Applied on",
+        "appliedBy": "Applied by",
+        "action": "Log input"
+      }
+    }
+  },
+  "footer": {
+    "slogan": "Grow with data, decide with confidence.",
+    "rights": "All rights reserved."
+  }
+}
