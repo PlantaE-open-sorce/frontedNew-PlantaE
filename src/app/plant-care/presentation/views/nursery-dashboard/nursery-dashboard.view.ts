@@ -453,7 +453,7 @@ export class NurseryDashboardViewComponent implements OnInit {
   }
 
   labelForAssetType(type: string) {
-    return this.assetTypeOptions.find((option) => option.value === type) ?? this.assetTypeOptions[0];
+    returnthis.assetTypeOptions.find((option) => option.value === type) ?? this.assetTypeOptions[0];
   }
 
   priorityLabel(priority: string) {
