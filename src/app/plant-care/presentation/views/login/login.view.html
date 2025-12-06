@@ -1,0 +1,60 @@
+<section class="auth-page">
+  <div class="auth-panel animate-fade-in">
+    <div class="auth-lang" *ngIf="languages.length">
+      <div class="lang-toggle">
+        <button
+          type="button"
+          *ngFor="let lang of languages"
+          [class.active]="isLang(lang)"
+          (click)="changeLang(lang)"
+        >
+          {{ lang | uppercase }}
+        </button>
+      </div>
+    </div>
+    <div class="auth-panel__header">
+      <p class="auth-eyebrow">{{ 'iam:login.eyebrow' | t:'Bienvenido de nuevo' }}</p>
+      <h1>{{ 'iam:login.title' | t:'Inicia sesión y cuida tu huerto digital' }}</h1>
+      <p>{{ 'iam:login.subtitle' | t:'Entra para monitorear tus plantas y alertas en segundos.' }}</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="auth-form">
+      <div class="input-group">
+        <label for="email">{{ 'iam:login.email' | t:'Correo electrónico' }}</label>
+        <input id="email" type="email" formControlName="email" placeholder="nombre@ejemplo.com" />
+      </div>
+
+      <div class="input-group">
+        <label for="password">{{ 'iam:login.password' | t:'Contraseña' }}</label>
+        <input id="password" type="password" formControlName="password" placeholder="••••••••" />
+      </div>
+
+      <div class="auth-actions">
+        <a routerLink="/forgot-password" class="link-subtle">{{ 'iam:login.forgot' | t:'¿Olvidaste tu contraseña?' }}</a>
+      </div>
+
+      <button type="submit" class="btn btn--primary btn--full" [disabled]="form.invalid">
+        {{ 'iam:login.action' | t:'Iniciar sesión' }}
+      </button>
+    </form>
+
+    <p class="auth-panel__footer">
+      {{ 'iam:login.noAccount' | t:'¿No tienes cuenta?' }}
+      <a routerLink="/register">{{ 'iam:login.register' | t:'Regístrate' }}</a>
+    </p>
+  </div>
+
+  <div class="auth-hero">
+    <div class="auth-hero__overlay">
+      <div class="auth-hero__content animate-slide-up">
+        <p class="auth-hero__quote">{{ 'iam:login.hero.quote' | t:'“Las plantas felices comienzan con datos claros.”' }}</p>
+        <div class="auth-hero__stats">
+          <article *ngFor="let stat of heroStats">
+            <h3>{{ stat.value }}</h3>
+            <p>{{ stat.label | t:stat.fallback }}</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

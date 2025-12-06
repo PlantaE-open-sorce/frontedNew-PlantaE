@@ -1,0 +1,777 @@
+{
+  "common": {
+    "generic": {
+      "na": "N/A",
+      "none": "—",
+      "loading": "Cargando...",
+      "yes": "Sí",
+      "no": "No",
+      "all": "Todos"
+    },
+    "readings": {
+      "eyebrow": "Historial",
+      "title": "Lecturas recientes",
+      "sensor": "Sensor",
+      "close": "Cerrar",
+      "metric": "Métrica",
+      "value": "Valor",
+      "timestamp": "Fecha",
+      "quality": "Calidad",
+      "empty": "Sin lecturas.",
+      "view": "Ver lecturas"
+    },
+    "actions": {
+      "back": "Volver",
+      "viewAll": "Ver todas",
+      "hideFilters": "Menos filtros",
+      "moreFilters": "Más filtros",
+      "save": "Guardar",
+      "cancel": "Cancelar",
+      "delete": "Eliminar",
+      "edit": "Editar",
+      "view": "Ver",
+      "close": "Cerrar"
+    },
+    "notFound": {
+      "eyebrow": "Ups, algo salió mal",
+      "title": "Página no encontrada",
+      "message": "La página que buscas no existe o se movió. Regresa al inicio para seguir explorando.",
+      "home": "Volver al inicio"
+    },
+    "aria": {
+      "languageSwitcher": "Selector de idioma"
+    },
+    "or": "o"
+  },
+  "errors": {
+    "unexpected": "Algo salió mal. Intenta de nuevo.",
+    "unauthorized": "Credenciales incorrectas. Verifica tu correo y contraseña.",
+    "forbidden": "No tienes permiso para realizar esta acción.",
+    "network": "Error de red. Revisa tu conexión e intenta nuevamente.",
+    "sessionExpired": "Tu sesión ha expirado. Inicia sesión otra vez.",
+    "alerts": {
+      "load": "No pudimos obtener las alertas recientes",
+      "resolve": "No pudimos resolver la alerta"
+    }
+  },
+  "tour": {
+    "badge": "Recorrido",
+    "skip": "Omitir",
+    "next": "Siguiente",
+    "dashboard": {
+      "overview": {
+        "title": "Resumen diario",
+        "body": "Aquí ves métricas clave y alertas recientes para actuar rápido."
+      },
+      "actions": {
+        "title": "Acciones rápidas",
+        "body": "Usa los botones y atajos para crear plantas o ver reportes al instante."
+      }
+    },
+    "plants": {
+      "filters": {
+        "title": "Filtra sin escribir todo",
+        "body": "Busca por palabra clave, especie, sensor o ubicación y ordena la lista."
+      },
+      "detail": {
+        "title": "Abre el detalle",
+        "body": "Haz clic en “Ver detalle” para editar, ver alertas y vincular sensores."
+      }
+    },
+    "nursery": {
+      "hero": {
+        "title": "Panel de vivero",
+        "body": "El hero te lleva directo a tareas e insumos críticos de tus lotes."
+      },
+      "tasks": {
+        "title": "Tareas y lotes",
+        "body": "Ve tareas pendientes y lotes en riesgo para priorizar acciones."
+      }
+    },
+    "sensors": {
+      "link": {
+        "title": "Vincula sin escribir",
+        "body": "Selecciona sensor y planta de las listas y confirma para vincular."
+      },
+      "readings": {
+        "title": "Revisa lecturas",
+        "body": "Usa “Ver lecturas” para validar datos recientes y calidad del sensor."
+      }
+    },
+    "reports": {
+      "filters": {
+        "title": "Elige rango y métricas",
+        "body": "Selecciona fechas y métricas antes de generar un PDF o CSV."
+      },
+      "preview": {
+        "title": "Previsualiza antes",
+        "body": "Revisa el contenido generado y confirma la descarga si es correcto."
+      }
+    }
+  },
+  "iam": {
+    "login.title": "Inicia sesión y cuida tu huerto digital",
+    "login.subtitle": "Entra para monitorear tus plantas y alertas en segundos.",
+    "login.eyebrow": "Bienvenido de nuevo",
+    "login.email": "Correo electrónico",
+    "login.password": "Contraseña",
+    "login.action": "Iniciar sesión",
+    "login.noAccount": "¿Eres nuevo aquí?",
+    "login.register": "¡Crea una cuenta ahora!",
+    "login.forgot": "¿Olvidaste tu contraseña?",
+    "login.benefits.health": "Monitorea la salud de tus cultivos",
+    "login.benefits.analytics": "Visualiza analíticas claras",
+    "login.benefits.alerts": "Recibe alertas inteligentes",
+    "login.hero.quote": "“Las plantas felices comienzan con datos claros.”",
+    "login.stats.devices": "Dispositivos activos",
+    "login.stats.success": "Alertas resueltas",
+    "login.stats.monitoring": "Monitoreo continuo",
+    "login.stats.users": "Usuarios activos",
+    "login.stats.uptime": "Tiempo en línea",
+    "login.stats.support": "Soporte",
+    "register.title": "Crear cuenta",
+    "register.subtitle": "Completa tu información para comenzar.",
+    "register.eyebrow": "Comienza gratis",
+    "register.displayName": "Nombre visible",
+    "register.email": "Correo electrónico",
+    "register.password": "Contraseña",
+    "register.confirmPassword": "Confirmar contraseña",
+    "register.language": "Idioma",
+    "register.accountType": "Tipo de cuenta",
+    "register.action": "Registrarse",
+    "register.types.home": "Usuario estándar",
+    "register.types.nursery": "Viverista",
+    "accountTypes.home": "Usuario estándar",
+    "accountTypes.nursery": "Viverista",
+    "register.perks.title": "Incluye",
+    "register.perks.analytics": "Dashboards y alertas personalizadas",
+    "register.perks.team": "Miembros de equipo ilimitados",
+    "register.perks.security": "Almacenamiento seguro de datos",
+    "register.hero.title": "Planifica tu invernadero",
+    "register.hero.subtitle": "Crea equipos, asigna dispositivos y comparte dashboards con tu equipo.",
+    "register.hero.stats.users": "Usuarios activos",
+    "register.hero.stats.uptime": "Tiempo en línea",
+    "register.hero.stats.support": "Soporte",
+    "register.stats.setup": "Tiempo promedio de configuración",
+    "register.stats.savings": "Ahorro de agua",
+    "register.haveAccount": "¿Ya tienes cuenta?",
+    "password": {
+      "title": "Cambiar contraseña",
+      "current": "Contraseña actual",
+      "new": "Nueva contraseña",
+      "action": "Actualizar",
+      "error": "No pudimos cambiar la contraseña"
+    },
+    "forgot": {
+      "title": "Recuperar contraseña",
+      "subtitle": "Enviaremos instrucciones si el correo existe.",
+      "email": "Correo electrónico",
+      "action": "Enviar",
+      "error": "No pudimos procesar la solicitud",
+      "sent": "Solicitud enviada. Revisa tu bandeja de entrada en los próximos minutos."
+    },
+    "reset": {
+      "eyebrow": "Recupera tu acceso",
+      "title": "Restablecer contraseña",
+      "subtitle": "Crea una nueva contraseña para continuar.",
+      "meta": "El enlace expira en 15 minutos por seguridad.",
+      "email": "Enlace enviado a",
+      "step": "Usa el enlace seguro que te enviamos para definir una nueva contraseña en los próximos 15 minutos. Mantén esta pestaña abierta para confirmar sin interrupciones.",
+      "new": "Nueva contraseña",
+      "confirm": "Confirmar contraseña",
+      "action": "Actualizar contraseña",
+      "login": "Volver al inicio de sesión",
+      "invalid": "Este enlace no es válido o ya expiró.",
+      "request": "Solicitar nuevo enlace",
+      "error": "No pudimos restablecer tu contraseña",
+      "mismatch": "Las contraseñas no coinciden"
+    }
+  },
+  "layout": {
+    "menu.home": "Inicio",
+    "menu.dashboard": "Dashboard",
+    "menu.plants": "Plantas",
+    "menu.sensors": "Sensores",
+    "menu.management": "Gestión",
+    "menu.nursery": "Vivero",
+    "menu.alerts": "Alertas",
+    "menu.reports": "Reportes",
+    "menu.devices": "Dispositivos",
+    "menu.profile": "Perfil",
+    "menu.logout": "Cerrar sesión",
+    "aria": {
+      "closeSidebar": "Cerrar navegación",
+      "openSidebar": "Abrir navegación"
+    }
+  },
+  "home": {
+    "intro": "Bienvenido a PlantaE",
+    "description": "Gestiona plantas, sensores y reportes desde un solo lugar.",
+    "eyebrow": "Ecosistemas conectados",
+    "actions.create": "Crea tu cuenta",
+    "actions.learn": "Conoce más",
+    "actions.dashboard": "Ir a mis plantas",
+    "metrics.devices": "Sensores conectados",
+    "metrics.events": "Eventos procesados",
+    "metrics.savings": "Ahorro de recursos",
+    "features.title": "Todo lo que necesitas para cultivar con precisión",
+    "features.monitoring.title": "Monitoreo en tiempo real",
+    "features.monitoring.copy": "Conoce la humedad, temperatura y nutrición de tus cultivos sin salir del dashboard.",
+    "features.automation.title": "Automatización inteligente",
+    "features.automation.copy": "Configura reglas para riego y fertilización basadas en datos reales.",
+    "features.collaboration.title": "Colaboración segura",
+    "features.collaboration.copy": "Comparte reportes y alertas con tu equipo o clientes en segundos."
+  },
+  "about": {
+    "title": "Acerca de PlantaE",
+    "description": "Plataforma para monitorear la salud de cultivos, conectar sensores IoT, gestionar alertas y generar reportes automatizados."
+  },
+  "dashboard": {
+    "eyebrow": "Resumen diario",
+    "title": "No tienes plantas registradas",
+    "subtitle": "Rota tus macetas para un crecimiento uniforme.",
+    "greeting": "Tienes {{ count }} plantas activas listas para cuidar",
+    "empty": "Registra tu primera planta para verla aquí.",
+    "plants": {
+      "title": "Mis Plantas"
+    },
+    "manual": {
+      "title": "Registrar acción manual",
+      "subtitle": "Riego, fertilización, poda...",
+      "type": "Tipo",
+      "typePlaceholder": "Riego, Fertilización...",
+      "notes": "Notas",
+      "notesPlaceholder": "Observaciones adicionales",
+      "datetime": "Fecha y hora",
+      "duration": "Duración (min)",
+      "action": "Registrar acción"
+    },
+    "recent": {
+      "title": "Últimas acciones",
+      "noNotes": "Sin notas",
+      "empty": "Aún no has registrado acciones."
+    }
+  },
+  "plants": {
+    "list": {
+      "title": "Plantas registradas",
+      "subtitle": "Gestiona tus cultivos desde un solo lugar.",
+      "add": "Agregar planta",
+      "eyebrow": "Mis Cultivos",
+      "noSensor": "Sin sensor",
+      "emptyDesc": "Intenta ajustar los filtros o registra una nueva planta.",
+      "filters": {
+        "keyword": "Búsqueda rápida",
+        "keywordPlaceholder": "Nombre, especie o sensor",
+        "searchPlaceholder": "Buscar por nombre, especie...",
+        "name": "Nombre",
+        "species": "Especie",
+        "sensor": "Sensor",
+        "hasAlerts": "Tiene alertas",
+        "location": "Ubicación",
+        "createdFrom": "Creado desde",
+        "createdTo": "Creado hasta",
+        "sort": "Ordenar por",
+        "status": {
+          "all": "Todos",
+          "active": "Activo",
+          "inactive": "Inactivo",
+          "alert": "Requiere atención"
+        },
+        "sortNewest": "Más recientes",
+        "sortOldest": "Más antiguos",
+        "sortNameAsc": "Nombre A-Z",
+        "sortNameDesc": "Nombre Z-A",
+        "search": "Buscar",
+        "clear": "Limpiar",
+        "apply": "Aplicar",
+        "helper": "Combina filtros para encontrar plantas rápidamente."
+      },
+      "actions": {
+        "refresh": "Actualizar lista"
+      },
+      "sensor": "Sensor",
+      "device": "Dispositivo",
+      "location": "Ubicación",
+      "unassigned": "Sin asignar",
+      "view": "Ver detalles",
+      "loading": "Cargando...",
+      "empty": "No encontramos plantas con esos filtros.",
+      "pagination": {
+        "previous": "Anterior",
+        "next": "Siguiente",
+        "page": "Página",
+        "of": "de"
+      },
+      "status": {
+        "active": "Activo",
+        "inactive": "Inactivo",
+        "healthy": "Saludable",
+        "alert": "Requiere atención",
+        "unknown": "Desconocido",
+        "ACTIVE": "Activo",
+        "INACTIVE": "Inactivo",
+        "HEALTHY": "Saludable",
+        "ALERT": "Requiere atención",
+        "UNKNOWN": "Desconocido"
+      }
+    },
+    "add": {
+      "eyebrow": "Nuevo cultivo",
+      "title": "Registrar planta",
+      "subtitle": "Completa los detalles para comenzar el monitoreo.",
+      "fields": {
+        "name": "Nombre",
+        "namePlaceholder": "Ej. Ficus Lyrata",
+        "species": "Especie",
+        "speciesPlaceholder": "Nombre botánico",
+        "location": "Ubicación",
+        "locationPlaceholder": "Ej. Invernadero Norte, Bogotá",
+        "locationHint": "Ayuda a tu equipo a identificar la ubicación física.",
+        "device": "Dispositivo",
+        "devicePlaceholder": "Selecciona un dispositivo",
+        "sensor": "Sensor",
+        "sensorPlaceholder": "Selecciona un sensor"
+      },
+      "actions": {
+        "save": "Guardar"
+      }
+    },
+    "detail": {
+      "fields": {
+        "species": "Especie:",
+        "sensor": "Sensor:",
+        "device": "Dispositivo:",
+        "created": "Creado:"
+      },
+      "unassigned": "Sin asignar",
+      "status": {
+        "unknown": "Sin estado"
+      },
+      "alerts": {
+        "title": "Alertas",
+        "active": "activas",
+        "loading": "Cargando alertas...",
+        "empty": "No hay alertas recientes.",
+        "value": "Valor:",
+        "status": {
+          "open": "Abierta",
+          "acknowledged": "Reconocida",
+          "resolved": "Resuelta"
+        }
+      },
+      "notFound": "No pudimos encontrar la planta solicitada."
+    },
+    "management": {
+      "eyebrow": "Colección",
+      "title": "Gestión de plantas",
+      "subtitle": "Administra tu colección y monitorea su estado.",
+      "actions": {
+        "add": "Agregar planta",
+        "view": "Ver detalles",
+        "delete": "Eliminar",
+        "addFirst": "Añadir primera planta"
+      },
+      "table": {
+        "name": "Nombre",
+        "status": "Estado",
+        "alerts": "Alertas",
+        "actions": "Acciones"
+      },
+      "alerts": {
+        "yes": "Activas",
+        "no": "Sin alertas"
+      },
+      "empty": "Tu jardín está vacío",
+      "emptyDesc": "Comienza añadiendo tu primera planta para monitorearla.",
+      "confirmDelete": "¿Eliminar esta planta?"
+    }
+  },
+  "alerts": {
+    "messages": {
+      "resolved": "Alerta resuelta"
+    },
+    "types": {
+      "THRESHOLD_BREACH": "Umbral Excedido",
+      "LOW_BATTERY": "Batería Baja",
+      "SENSOR_OFFLINE": "Sensor Desconectado",
+      "SENSOR_INACTIVE": "Sensor Inactivo",
+      "CRITICAL": "Crítica"
+    },
+    "list": {
+      "eyebrow": "Monitoreo",
+      "title": "Alertas recientes",
+      "subtitle": "Revisa eventos críticos y actúa rápido.",
+      "actions": {
+        "refresh": "Actualizar",
+        "reset": "Restablecer",
+        "resolve": "Marcar como resuelta"
+      },
+      "filters": {
+        "plantLabel": "Planta",
+        "sensorLabel": "Sensor",
+        "typeLabel": "Tipo de alerta",
+        "plant": "Buscar planta...",
+        "sensor": "Buscar sensor...",
+        "type": "Tipo de alerta...",
+        "noPlants": "No hay plantas",
+        "noSensors": "No hay sensores",
+        "noTypes": "No hay tipos",
+        "apply": "Filtrar",
+        "reset": "Limpiar"
+      },
+      "meta": {
+        "plant": "Planta",
+        "sensor": "Sensor",
+        "time": "Hora",
+        "value": "Valor"
+      },
+      "empty": "Todo bajo control",
+      "emptyDesc": "No hay alertas pendientes con los filtros actuales.",
+      "pagination": {
+        "previous": "Anterior",
+        "next": "Siguiente",
+        "page": "Página"
+      }
+    },
+    "status": {
+      "open": "Abierta",
+      "active": "Activa",
+      "acknowledged": "Reconocida",
+      "resolved": "Resuelta",
+      "recovered": "Resuelta",
+      "unknown": "Desconocido"
+    }
+  },
+  "devices": {
+    "eyebrow": "Hardware",
+    "title": "Dispositivos",
+    "subtitle": "Registra gateways o hubs y asígnalos a tus plantas.",
+    "lookup": {
+      "title": "Gestionar dispositivo"
+    },
+    "fields": {
+      "deviceId": "ID del dispositivo",
+      "ownerId": "Propietario",
+      "hwModel": "Modelo hardware",
+      "secret": "Secreto (opcional)",
+      "lookupId": "Buscar por ID",
+      "note": "Notas",
+      "plantId": "Asignar a planta",
+      "selectDevice": "Mis dispositivos",
+      "selectPlant": "Selecciona una planta..."
+    },
+    "actions": {
+      "register": "Registrar Dispositivo",
+      "deactivate": "Desactivar dispositivo",
+      "load": "Cargar",
+      "updateNote": "Actualizar nota",
+      "link": "Vincular a planta",
+      "chooseDevice": "Selecciona de la lista..."
+    },
+    "detail": {
+      "title": "Detalle",
+      "id": "ID:",
+      "model": "Modelo:",
+      "status": "Estado:",
+      "active": "Activo",
+      "inactive": "Inactivo",
+      "note": "Nota:"
+    }
+  },
+  "sensors": {
+    "eyebrow": "Telemetría",
+    "title": "Sensores",
+    "subtitle": "Monitorea el estado y actividad más reciente.",
+    "hint": "Elige sensores y plantas de los menús para vincularlos sin escribir IDs manualmente.",
+    "tabs": {
+      "register": "Registrar",
+      "link": "Vincular",
+      "manage": "Gestionar"
+    },
+    "actions": {
+      "refresh": "Actualizar"
+    },
+    "filters": {
+      "type": "Filtrar por tipo...",
+      "status": {
+        "all": "Todos los estados",
+        "active": "Activo",
+        "inactive": "Inactivo"
+      },
+      "plant": "ID Planta...",
+      "apply": "Filtrar",
+      "reset": "Limpiar",
+      "clear": "Limpiar"
+    },
+    "table": {
+      "id": "ID / Tipo",
+      "type": "Tipo",
+      "status": "Estado",
+      "plant": "Planta Asignada",
+      "lastReading": "Última Lectura",
+      "actions": "Acciones"
+    },
+    "empty": "No hay sensores",
+    "emptyDesc": "Registra tu primer sensor para comenzar a monitorear.",
+    "readings": {
+      "title": "Historial de Lecturas",
+      "empty": "Sin datos recientes."
+    },
+    "activity": {
+      "title": "Actividad destacada",
+      "readings": "lecturas"
+    },
+    "forms": {
+      "common": {
+        "sensorId": "Sensor",
+        "useSensor": "Usar en formularios"
+      },
+      "register": {
+        "title": "Nuevo Sensor",
+        "type": "Tipo de Sensor",
+        "ownerId": "Propietario",
+        "plantId": "Asignar a Planta (Opcional)",
+        "chooseType": "Selecciona tipo...",
+        "subtitle": "Registra un nuevo dispositivo sensor.",
+        "action": "Registrar Sensor"
+      },
+      "readings": {
+        "eyebrow": "Histórico",
+        "title": "Lecturas recientes",
+        "sensor": "Sensor",
+        "close": "Cerrar",
+        "metric": "Métrica",
+        "value": "Valor",
+        "timestamp": "Fecha",
+        "quality": "Calidad",
+        "empty": "Sin lecturas registradas.",
+        "view": "Ver lecturas"
+      },
+      "link": {
+        "title": "Vincular",
+        "plantId": "Planta",
+        "action": "Vincular Sensor",
+        "chooseSensor": "Selecciona sensor...",
+        "choosePlant": "Selecciona planta...",
+        "subtitle": "Conecta sensores a tus plantas."
+      },
+      "deactivate": {
+        "title": "Desactivar",
+        "subtitle": "Detén temporalmente la captura de datos.",
+        "action": "Desactivar"
+      },
+      "ingest": {
+        "title": "Simular Lectura",
+        "metric": "Métrica",
+        "value": "Valor",
+        "timestamp": "Fecha y hora",
+        "quality": "Calidad",
+        "subtitle": "Simula una lectura para pruebas o calibraciones.",
+        "action": "Enviar Lectura"
+      },
+      "types": {
+        "soil": "Suelo",
+        "temperature": "Temperatura",
+        "humidity": "Humedad",
+        "light": "Luz",
+        "multi": "Multi"
+      },
+      "metrics": {
+        "soilMoisture": "Humedad del suelo",
+        "temperature": "Temperatura",
+        "humidity": "Humedad",
+        "light": "Luz"
+      }
+    },
+    "status": {
+      "active": "Activo",
+      "inactive": "Inactivo",
+      "unknown": "Desconocido"
+    }
+  },
+  "profile": {
+    "account": {
+      "eyebrow": "Tu cuenta",
+      "title": "Información personal",
+      "description": "Mantén sincronizados tu idioma, zona horaria y nombre dentro de PlantaE."
+    },
+    "public": {
+      "eyebrow": "Presencia",
+      "title": "Perfil público",
+      "description": "Define cómo te verán al compartir tu enlace público.",
+      "share": "Comparte tu enlace",
+      "loading": "Cargando perfil...",
+      "notFound": "No encontramos este perfil.",
+      "notFoundHint": "Verifica que el enlace sea correcto o intenta más tarde."
+    },
+    "fields": {
+      "fullName": "Nombre completo",
+      "timezone": "Zona horaria",
+      "language": "Idioma",
+      "displayName": "Nombre para mostrar",
+      "slug": "Slug público",
+      "avatar": "Avatar URL",
+      "location": "Ubicación",
+      "locationPlaceholder": "Ej. Av. Siempre Viva 742, Ciudad",
+      "locationHint": "Ingresa una dirección real para mostrarla en tu perfil y ayudar a ubicar tu vivero.",
+      "openMap": "Abrir en OpenStreetMap",
+      "bio": "Bio"
+    },
+    "actions": {
+      "changePassword": "Cambiar contraseña",
+      "delete": "Eliminar cuenta",
+      "saveAccount": "Guardar cambios",
+      "savePublic": "Guardar perfil público",
+      "confirmDelete": "Esta acción eliminará tu cuenta. ¿Continuar?"
+    },
+    "errors": {
+      "delete": "No pudimos eliminar la cuenta",
+      "identify": "No pudimos identificar tu cuenta"
+    }
+  },
+  "settings": {
+    "eyebrow": "Alertas y recordatorios",
+    "title": "Notificaciones",
+    "subtitle": "Configura tus horarios silenciosos y canales preferidos.",
+    "status": {
+      "saving": "Guardando...",
+      "live": "En tiempo real"
+    },
+    "fields": {
+      "quietStart": "Inicio horas silenciosas",
+      "quietEnd": "Fin horas silenciosas",
+      "digest": "Hora del resumen",
+      "digestHint": "Recibirás un resumen diario",
+      "format": "Formato 24h"
+    },
+    "preferences": {
+      "hint": "Elige cómo quieres enterarte.",
+      "email": "Correo",
+      "inApp": "In-app"
+    },
+    "actions": {
+      "save": "Guardar cambios"
+    }
+  },
+  "reports": {
+    "eyebrow": "Datos históricos",
+    "title": "Reportes",
+    "subtitle": "Descarga reportes en PDF o CSV para tus plantas o un resumen general.",
+    "fields": {
+      "plant": "Planta (obligatoria para PDF/CSV)",
+      "selectPlant": "Selecciona una planta",
+      "from": "Desde",
+      "to": "Hasta",
+      "metrics": "Métricas"
+    },
+    "actions": {
+      "pdf": "PDF planta",
+      "csv": "CSV planta",
+      "summary": "Resumen PDF"
+    },
+    "preview": {
+      "eyebrow": "Previsualización",
+      "title": "Verifica antes de descargar",
+      "subtitle": "Revisa el contenido generado o vuelve a editar los filtros.",
+      "download": "Descargar",
+      "cancel": "Volver a editar",
+      "noSupport": "Tu navegador no pudo mostrar el PDF."
+    },
+    "metrics": {
+      "temperature": "Temperatura",
+      "humidity": "Humedad",
+      "soilMoisture": "Humedad del suelo",
+      "ph": "pH"
+    },
+    "errors": {
+      "invalidRange": "Selecciona un rango de fechas válido",
+      "plantRequired": "Debes indicar una planta para PDF/CSV",
+      "generic": "No pudimos generar el reporte"
+    },
+    "messages": {
+      "success": "Reporte generado"
+    }
+  },
+  "nursery": {
+    "hero": {
+      "eyebrow": "Operaciones de vivero",
+      "title": "Todo tu vivero en una sola vista",
+      "subtitle": "Monitorea lotes, registra tareas críticas y aplica insumos con pasos guiados y claros.",
+      "ctaTasks": "Ver tareas",
+      "ctaInputs": "Registrar insumo",
+      "chips": {
+        "tasks": "Tareas pendientes y próximas",
+        "inputs": "Aplicaciones recientes",
+        "batches": "Lotes con riesgo"
+      }
+    },
+    "summary": {
+      "eyebrow": "Indicadores",
+      "title": "Panel de vivero",
+      "plants": "Plantas activas",
+      "batches": "Lotes activos",
+      "tasks": "Tareas pendientes"
+    },
+    "batches": {
+      "eyebrow": "Destacados",
+      "title": "Lotes en seguimiento",
+      "plants": "Plantas",
+      "routine": "Rutina",
+      "progress": "Avance",
+      "status": {
+        "onTrack": "En curso",
+        "delayed": "Retrasado",
+        "atRisk": "En riesgo"
+      }
+    },
+    "tasks": {
+      "eyebrow": "Operaciones",
+      "title": "Tareas críticas",
+      "refresh": "Actualizar",
+      "empty": "Sin tareas asignadas.",
+      "due": "Vence",
+      "priority": {
+        "low": "Baja",
+        "medium": "Media",
+        "high": "Alta"
+      },
+      "form": {
+        "title": "Título",
+        "assetId": "Activo",
+        "assetType": "Tipo de activo",
+        "assetPlant": "Planta",
+        "assetBatch": "Lote",
+        "priority": "Prioridad",
+        "dueDate": "Fecha límite",
+        "notes": "Notas",
+        "action": "Registrar tarea"
+      }
+    },
+    "inputs": {
+      "eyebrow": "Insumos",
+      "title": "Aplicaciones recientes",
+      "asset": "Activo",
+      "type": "Tipo",
+      "quantity": "Cantidad",
+      "cost": "Costo",
+      "appliedAt": "Aplicado",
+      "empty": "Sin registros de insumos.",
+      "form": {
+        "assetId": "Activo",
+        "assetType": "Tipo de activo",
+        "inputType": "Tipo de insumo",
+        "quantity": "Cantidad",
+        "unit": "Unidad",
+        "cost": "Costo",
+        "appliedAt": "Aplicado en",
+        "appliedBy": "Aplicado por",
+        "action": "Registrar insumo"
+      }
+    }
+  },
+  "footer": {
+    "slogan": "Cultiva con datos, decide con confianza.",
+    "rights": "Todos los derechos reservados."
+  }
+}

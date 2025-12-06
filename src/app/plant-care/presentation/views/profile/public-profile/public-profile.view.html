@@ -1,0 +1,35 @@
+<article class="profile-card animate-slide-up">
+  <div class="profile-header">
+    <div class="profile-avatar">
+      <img *ngIf="avatarUrl" [src]="avatarUrl" alt="Avatar de {{ displayName }}" />
+      <div *ngIf="!avatarUrl" class="profile-avatar__placeholder">
+        {{ displayName.charAt(0).toUpperCase() || '?' }}
+      </div>
+    </div>
+    <div class="profile-info">
+      <h1 class="profile-name">{{ displayName }}</h1>
+      <div *ngIf="location" class="profile-location">
+        <span class="icon">📍</span>
+        <span>{{ location }}</span>
+      </div>
+    </div>
+  </div>
+  
+  <div class="profile-body">
+    <p *ngIf="bio" class="profile-bio">{{ bio }}</p>
+    <p *ngIf="!bio" class="profile-bio text-muted italic">
+      Este usuario prefiere dejar que sus plantas hablen por él.
+    </p>
+  </div>
+
+  <div class="profile-stats">
+    <div class="stat-item">
+      <span class="stat-value">0</span>
+      <span class="stat-label">Plantas</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-value">0</span>
+      <span class="stat-label">Seguidores</span>
+    </div>
+  </div>
+</article>

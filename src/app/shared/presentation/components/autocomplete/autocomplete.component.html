@@ -1,0 +1,27 @@
+<div class="autocomplete-container">
+    <div class="input-wrapper">
+        <input type="text" class="autocomplete-input" [placeholder]="placeholder" [value]="searchTerm()"
+            (input)="onInputChange($event)" (focus)="onFocus()" (blur)="onBlur()" (keydown)="onKeyDown($event)"
+            autocomplete="off" />
+        <button *ngIf="searchTerm()" type="button" class="clear-btn" (mousedown)="clear($event)" tabindex="-1">
+            ×
+        </button>
+        <span class="dropdown-icon" [class.open]="isOpen()">▾</span>
+    </div>
+
+    <ul class="options-list" *ngIf="isOpen() && filteredOptions().length > 0" (mousedown)="onMouseDown()">
+        <li *ngFor="let option of filteredOptions(); let i = index" class="option-item"
+            [class.highlighted]="i === highlightedIndex()"
+            [class.selected]="option[valueField] === selectedOption()?.[valueField]" (mousedown)="selectOption(option)"
+            (mouseenter)="highlightedIndex.set(i)">
+            <span class="option-label">{{ option[displayField] }}</span>
+            <span class="option-id" *ngIf="option[valueField] !== option[displayField]">
+                {{ $any(option[valueField]).toString().slice(0, 8) }}...
+            </span>
+        </li>
+    </ul>
+
+    <div class="empty-message" *ngIf="isOpen() && filteredOptions().length === 0 && searchTerm()">
+        {{ emptyMessage }}
+    </div>
+</div>

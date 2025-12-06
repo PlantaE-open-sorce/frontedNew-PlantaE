@@ -1,0 +1,81 @@
+<section class="auth-page">
+  <div class="auth-panel animate-fade-in">
+    <div class="auth-lang" *ngIf="languages.length">
+      <div class="lang-toggle">
+        <button type="button" *ngFor="let lang of languages" [class.active]="isLang(lang)" (click)="changeLang(lang)">
+          {{ lang | uppercase }}
+        </button>
+      </div>
+    </div>
+    <div class="auth-panel__header">
+      <p class="auth-eyebrow">{{ 'iam:register.eyebrow' | t:'Comienza gratis' }}</p>
+      <h1>{{ 'iam:register.title' | t:'Crear cuenta' }}</h1>
+      <p>{{ 'iam:register.subtitle' | t:'Completa tus datos para comenzar.' }}</p>
+    </div>
+
+    <form [formGroup]="form" (ngSubmit)="submit()" class="form-section">
+      <div class="input-group">
+        <label>{{ 'iam:register.displayName' | t:'Nombre para mostrar' }}</label>
+        <input formControlName="displayName" placeholder="Ej. Juan Pérez" />
+      </div>
+
+      <div class="input-group">
+        <label>{{ 'iam:register.email' | t:'Correo electrónico' }}</label>
+        <input formControlName="email" type="email" placeholder="nombre@ejemplo.com" />
+      </div>
+
+      <div class="grid-2" style="gap: 1rem; grid-template-columns: 1fr 1fr;">
+        <div class="input-group">
+          <label>{{ 'iam:register.password' | t:'Contraseña' }}</label>
+          <input formControlName="password" type="password" placeholder="••••••••" />
+        </div>
+        <div class="input-group">
+          <label>{{ 'iam:register.confirmPassword' | t:'Confirmar' }}</label>
+          <input formControlName="confirmPassword" type="password" placeholder="••••••••" />
+        </div>
+      </div>
+
+      <div class="grid-2" style="gap: 1rem; grid-template-columns: 1fr 1fr;">
+        <div class="input-group">
+          <label>{{ 'iam:register.language' | t:'Idioma' }}</label>
+          <select formControlName="language">
+            <option value="es">Español</option>
+            <option value="en">English</option>
+          </select>
+        </div>
+        <div class="input-group">
+          <label>{{ 'iam:register.accountType' | t:'Tipo de cuenta' }}</label>
+          <select formControlName="accountType">
+            <option value="HOME">{{ 'iam:register.types.home' | t:'Usuario normal' }}</option>
+            <option value="VIVERO_FORESTAL">{{ 'iam:register.types.nursery' | t:'Vivero Forestal' }}</option>
+          </select>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn--primary btn--full" [disabled]="form.invalid">
+        {{ 'iam:register.action' | t:'Crear cuenta' }}
+      </button>
+    </form>
+
+    <p class="auth-panel__footer">
+      {{ 'iam:register.haveAccount' | t:'¿Ya tienes cuenta?' }}
+      <a routerLink="/login">{{ 'iam:login.action' | t:'Inicia sesión' }}</a>
+    </p>
+  </div>
+
+  <div class="auth-hero auth-hero--register">
+    <div class="auth-hero__overlay">
+      <div class="auth-hero__content animate-slide-up">
+        <h3>{{ 'iam:register.hero.title' | t:'Planifica tu invernadero' }}</h3>
+        <p class="auth-hero__quote">{{ 'iam:register.hero.subtitle' | t:'Crea equipos, asigna dispositivos y comparte
+          paneles con tu equipo.' }}</p>
+        <div class="auth-hero__stats">
+          <article *ngFor="let stat of heroStats">
+            <h3>{{ stat.value }}</h3>
+            <p>{{ stat.label | t:stat.fallback }}</p>
+          </article>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

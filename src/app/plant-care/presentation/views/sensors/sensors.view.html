@@ -1,0 +1,263 @@
+<div class="page-layout animate-fade-in">
+    <div class="page-header">
+        <div>
+            <p class="eyebrow">{{ 'sensors:eyebrow' | t:'Telemetría' }}</p>
+            <h1>{{ 'sensors:title' | t:'Sensores' }}</h1>
+            <p class="text-muted">{{ 'sensors:subtitle' | t:'Monitorea el estado y actividad más reciente.' }}</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn--outline" type="button" (click)="reload()">
+                <span class="icon-refresh">↻</span>
+                {{ 'sensors:actions.refresh' | t:'Actualizar' }}
+            </button>
+        </div>
+    </div>
+
+    <div class="sensors-grid">
+        <!-- Left Column: Actions -->
+        <aside class="actions-panel card-minimal">
+            <nav class="actions-tabs">
+                <button class="tab-btn" [class.active]="activeTab === 'register'" (click)="activeTab = 'register'">
+                    {{ 'sensors:tabs.register' | t:'Registrar' }}
+                </button>
+                <button class="tab-btn" [class.active]="activeTab === 'link'" (click)="activeTab = 'link'">
+                    {{ 'sensors:tabs.link' | t:'Vincular' }}
+                </button>
+                <button class="tab-btn" [class.active]="activeTab === 'manage'" (click)="activeTab = 'manage'">
+                    {{ 'sensors:tabs.manage' | t:'Gestionar' }}
+                </button>
+            </nav>
+
+            <div class="actions-content animate-fade-in" [ngSwitch]="activeTab">
+                <!-- Register Form -->
+                <form *ngSwitchCase="'register'" [formGroup]="registerForm" (ngSubmit)="registerSensor()"
+                    class="form-stack">
+                    <div class="form-header">
+                        <h3>{{ 'sensors:forms.register.title' | t:'Nuevo Sensor' }}</h3>
+                        <p class="text-muted">{{ 'sensors:forms.register.subtitle' | t:'Registra un nuevo dispositivo
+                            sensor.' }}</p>
+                    </div>
+
+                    <div class="input-group">
+                        <label>{{ 'sensors:forms.register.type' | t:'Tipo de Sensor' }}</label>
+                        <select formControlName="type" class="input-clean">
+                            <option value="">{{ 'sensors:forms.register.chooseType' | t:'Selecciona tipo...' }}</option>
+                            <option *ngFor="let option of sensorTypeOptions" [value]="option.value">
+                                {{ option.label | t: option.fallback }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>{{ 'sensors:forms.register.plantId' | t:'Asignar a Planta (Opcional)' }}</label>
+                        <select formControlName="plantId" class="input-clean">
+                            <option value="">{{ 'common:generic.none' | t:'Sin asignar' }}</option>
+                            <option *ngFor="let option of plantOptions()" [value]="option.id">{{ option.label }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn--primary btn--full" type="submit" [disabled]="registerForm.invalid">
+                        {{ 'sensors:forms.register.action' | t:'Registrar Sensor' }}
+                    </button>
+                </form>
+
+                <!-- Link Form -->
+                <form *ngSwitchCase="'link'" [formGroup]="linkForm" (ngSubmit)="linkSensor()" class="form-stack">
+                    <div class="form-header">
+                        <h3>{{ 'sensors:forms.link.title' | t:'Vincular' }}</h3>
+                        <p class="text-muted">{{ 'sensors:forms.link.subtitle' | t:'Conecta sensores a tus plantas.' }}
+                        </p>
+                    </div>
+
+                    <div class="input-group">
+                        <label>{{ 'sensors:forms.common.sensorId' | t:'Sensor' }}</label>
+                        <select formControlName="sensorId" class="input-clean">
+                            <option value="">{{ 'sensors:forms.link.chooseSensor' | t:'Selecciona sensor...' }}</option>
+                            <option *ngFor="let option of sensorOptions()" [value]="option.id">{{ option.label }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <div class="input-group">
+                        <label>{{ 'sensors:forms.link.plantId' | t:'Planta' }}</label>
+                        <select formControlName="plantId" class="input-clean">
+                            <option value="">{{ 'sensors:forms.link.choosePlant' | t:'Selecciona planta...' }}</option>
+                            <option *ngFor="let option of plantOptions()" [value]="option.id">{{ option.label }}
+                            </option>
+                        </select>
+                    </div>
+
+                    <button class="btn btn--primary btn--full" type="submit" [disabled]="linkForm.invalid">
+                        {{ 'sensors:forms.link.action' | t:'Vincular Sensor' }}
+                    </button>
+                </form>
+
+                <!-- Manage (Deactivate/Ingest) -->
+                <div *ngSwitchCase="'manage'" class="manage-forms">
+                    <!-- Deactivate -->
+                    <form [formGroup]="deactivateForm" (ngSubmit)="deactivateSensor()" class="form-stack mb-4">
+                        <div class="form-header">
+                            <h3>{{ 'sensors:forms.deactivate.title' | t:'Desactivar' }}</h3>
+                        </div>
+                        <div class="input-group">
+                            <select formControlName="sensorId" class="input-clean">
+                                <option value="">{{ 'sensors:forms.link.chooseSensor' | t:'Selecciona sensor...' }}
+                                </option>
+                                <option *ngFor="let option of sensorOptions()" [value]="option.id">{{ option.label }}
+                                </option>
+                            </select>
+                        </div>
+                        <button class="btn btn--danger-ghost btn--full" type="submit"
+                            [disabled]="deactivateForm.invalid">
+                            {{ 'sensors:forms.deactivate.action' | t:'Desactivar' }}
+                        </button>
+                    </form>
+
+                    <hr class="divider">
+
+                    <!-- Ingest (Test) -->
+                    <form [formGroup]="ingestForm" (ngSubmit)="ingestReading()" class="form-stack mt-4">
+                        <div class="form-header">
+                            <h3>{{ 'sensors:forms.ingest.title' | t:'Simular Lectura' }}</h3>
+                        </div>
+
+                        <div class="input-group">
+                            <select formControlName="sensorId" class="input-clean">
+                                <option value="">{{ 'sensors:forms.link.chooseSensor' | t:'Selecciona sensor...' }}
+                                </option>
+                                <option *ngFor="let option of sensorOptions()" [value]="option.id">{{ option.label }}
+                                </option>
+                            </select>
+                        </div>
+
+                        <div class="grid-2">
+                            <input formControlName="metric" class="input-clean" placeholder="Métrica (ej. temp)" />
+                            <input type="number" formControlName="value" class="input-clean" placeholder="Valor" />
+                        </div>
+
+                        <button class="btn btn--outline btn--full" type="submit" [disabled]="ingestForm.invalid">
+                            {{ 'sensors:forms.ingest.action' | t:'Enviar Lectura' }}
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Right Column: List & Data -->
+        <section class="sensors-content">
+            <!-- Filters -->
+            <form [formGroup]="filters" (ngSubmit)="applyFilters()" class="filters-bar card-minimal">
+                <div class="filter-group">
+                    <input formControlName="type" class="input-clean"
+                        [placeholder]="'sensors:filters.type' | t:'Filtrar por tipo...'" />
+                </div>
+                <div class="filter-group">
+                    <select formControlName="status" class="input-clean">
+                        <option value="">{{ 'sensors:filters.status.all' | t:'Todos los estados' }}</option>
+                        <option value="ACTIVE">{{ 'sensors:filters.status.active' | t:'Activo' }}</option>
+                        <option value="INACTIVE">{{ 'sensors:filters.status.inactive' | t:'Inactivo' }}</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <input formControlName="plantId" class="input-clean"
+                        [placeholder]="'sensors:filters.plant' | t:'ID Planta...'" />
+                </div>
+                <button class="btn btn--ghost" type="button" (click)="resetFilters()">
+                    {{ 'sensors:filters.reset' | t:'Limpiar' }}
+                </button>
+            </form>
+
+            <!-- Table -->
+            <div class="card-minimal table-container" *ngIf="sensors().length; else emptyState">
+                <table class="clean-table">
+                    <thead>
+                        <tr>
+                            <th>{{ 'sensors:table.id' | t:'ID / Tipo' }}</th>
+                            <th>{{ 'sensors:table.status' | t:'Estado' }}</th>
+                            <th>{{ 'sensors:table.plant' | t:'Planta Asignada' }}</th>
+                            <th>{{ 'sensors:table.lastReading' | t:'Última Lectura' }}</th>
+                            <th class="text-right">{{ 'sensors:table.actions' | t:'Acciones' }}</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let sensor of sensors()" class="table-row">
+                            <td>
+                                <div class="sensor-id-cell">
+                                    <span class="font-medium">{{ sensor.id }}</span>
+                                    <small class="text-muted">{{ typeCopy(sensor.type).label |
+                                        t:typeCopy(sensor.type).fallback }}</small>
+                                </div>
+                            </td>
+                            <td>
+                                <span class="status-badge" [ngClass]="badgeClass(sensor.status)">
+                                    {{ getStatusCopy(sensor.status).key | t:getStatusCopy(sensor.status).fallback }}
+                                </span>
+                            </td>
+                            <td>
+                                <span *ngIf="sensor.plantId" class="plant-tag">{{ sensor.plantId }}</span>
+                                <span *ngIf="!sensor.plantId" class="text-muted">—</span>
+                            </td>
+                            <td>
+                                <span class="text-sm">{{ sensor.lastReadingAt | date:'short' }}</span>
+                            </td>
+                            <td class="text-right">
+                                <div class="action-buttons">
+                                    <button class="btn-icon" (click)="prefillSensor(sensor.id)" title="Usar">
+                                        ⚡
+                                    </button>
+                                    <button class="btn-icon" (click)="viewReadings(sensor.id)" title="Ver lecturas">
+                                        📊
+                                    </button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <ng-template #emptyState>
+                <div class="empty-state card-minimal">
+                    <div class="empty-icon">📡</div>
+                    <h3>{{ 'sensors:empty' | t:'No hay sensores' }}</h3>
+                    <p class="text-muted">{{ 'sensors:emptyDesc' | t:'Registra tu primer sensor para comenzar a
+                        monitorear.' }}</p>
+                </div>
+            </ng-template>
+
+            <!-- Readings Panel (Overlay or Expandable) -->
+            <div class="readings-panel card-minimal animate-slide-up" *ngIf="selectedSensorId">
+                <header class="panel-header">
+                    <div>
+                        <h3>{{ 'sensors:readings.title' | t:'Historial de Lecturas' }}</h3>
+                        <p class="text-muted">{{ selectedSensorId }}</p>
+                    </div>
+                    <button class="btn btn--ghost btn--small" (click)="closeReadings()">✕</button>
+                </header>
+
+                <div class="readings-list">
+                    <table class="clean-table" *ngIf="readings().length; else noReadings">
+                        <thead>
+                            <tr>
+                                <th>Métrica</th>
+                                <th>Valor</th>
+                                <th>Fecha</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let reading of readings()">
+                                <td>{{ metricCopy(reading.metric).label | t:metricCopy(reading.metric).fallback }}</td>
+                                <td class="font-medium">{{ reading.value | number: '1.2-2' }}</td>
+                                <td class="text-sm text-muted">{{ reading.timestamp | date: 'short' }}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <ng-template #noReadings>
+                        <p class="text-center p-4 text-muted">{{ 'sensors:readings.empty' | t:'Sin datos recientes.' }}
+                        </p>
+                    </ng-template>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

@@ -1,0 +1,139 @@
+<div class="page-layout animate-fade-in">
+  <app-confirmation-modal *ngIf="showDeleteModal" [title]="'profile:actions.delete' | t:'Eliminar cuenta'"
+    [message]="'profile:actions.confirmDelete' | t:'Esta acción eliminará tu cuenta permanentemente. ¿Estás seguro?'"
+    [confirmText]="'profile:actions.delete' | t:'Eliminar'" [cancelText]="'profile:actions.cancel' | t:'Cancelar'"
+    (confirm)="confirmDelete()" (cancel)="showDeleteModal = false" />
+
+  <div class="page-header">
+    <div>
+      <h1>{{ 'profile:title' | t:'Configuración de Perfil' }}</h1>
+      <p class="text-muted">{{ 'profile:subtitle' | t:'Administra tu información personal y tu presencia pública.' }}
+      </p>
+    </div>
+  </div>
+
+  <div class="profile-grid">
+    <!-- Left Column: Personal Info -->
+    <section class="card-minimal">
+      <header class="card-header">
+        <div>
+          <p class="eyebrow">{{ 'profile:account.eyebrow' | t:'Tu cuenta' }}</p>
+          <h2>{{ 'profile:account.title' | t:'Información personal' }}</h2>
+          <p class="text-muted">
+            {{ 'profile:account.description' | t:'Actualiza tu zona horaria, idioma y nombre para mantener sincronizada
+            tu cuenta.' }}
+          </p>
+        </div>
+      </header>
+
+      <form [formGroup]="form" (ngSubmit)="save()" class="form-stack">
+        <div class="input-group">
+          <label>{{ 'profile:fields.fullName' | t:'Nombre completo' }}</label>
+          <input formControlName="fullName" class="input-clean" />
+        </div>
+
+        <div class="grid-2">
+          <div class="input-group">
+            <label>{{ 'profile:fields.timezone' | t:'Zona horaria' }}</label>
+            <input formControlName="timezone" placeholder="America/Lima" class="input-clean" />
+          </div>
+          <div class="input-group">
+            <label>{{ 'profile:fields.language' | t:'Idioma' }}</label>
+            <select formControlName="language" class="input-clean">
+              <option *ngFor="let lang of languages" [value]="lang">{{ lang | uppercase }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn--danger-ghost" type="button" (click)="deleteAccount()">
+            {{ 'profile:actions.delete' | t:'Eliminar cuenta' }}
+          </button>
+          <div class="spacer" style="flex: 1"></div>
+          <button type="button" class="btn btn--ghost" (click)="goToChangePassword()">
+            {{ 'profile:actions.changePassword' | t:'Cambiar contraseña' }}
+          </button>
+          <button type="submit" class="btn btn--primary" [disabled]="form.invalid || isLoading()">
+            {{ 'profile:actions.saveAccount' | t:'Guardar cambios' }}
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- Right Column: Public Profile -->
+    <section class="card-minimal">
+      <header class="card-header">
+        <div>
+          <p class="eyebrow">{{ 'profile:public.eyebrow' | t:'Presencia' }}</p>
+          <h2>{{ 'profile:public.title' | t:'Perfil público' }}</h2>
+          <p class="text-muted">
+            {{ 'profile:public.description' | t:'Organiza cómo te verán los demás al compartir tu enlace público.' }}
+          </p>
+        </div>
+        <div class="share-badge" *ngIf="profile()?.slug">
+          <a [href]="publicLink()" target="_blank" rel="noreferrer">
+            {{ publicLink() }}
+            <i class="icon-external-link"></i>
+          </a>
+        </div>
+      </header>
+
+      <form [formGroup]="publicForm" (ngSubmit)="savePublic()" class="form-stack">
+        <div class="avatar-preview">
+          <div class="avatar-preview__img" *ngIf="publicForm.controls.avatarUrl.value; else placeholder">
+            <img [src]="publicForm.controls.avatarUrl.value" alt="Avatar" />
+          </div>
+          <ng-template #placeholder>
+            <div class="avatar-preview__placeholder">URL</div>
+          </ng-template>
+        </div>
+        <div class="input-group">
+          <label>{{ 'profile:fields.displayName' | t:'Nombre para mostrar' }}</label>
+          <input formControlName="displayName" class="input-clean" />
+        </div>
+
+        <div class="input-group">
+          <label>{{ 'profile:fields.slug' | t:'Slug público' }}</label>
+          <div class="input-prefix">
+            <span>plantae.com/u/</span>
+            <input formControlName="slug" placeholder="mi-perfil" class="input-clean" />
+          </div>
+        </div>
+
+        <div class="input-group">
+          <label>{{ 'profile:fields.avatar' | t:'Avatar URL' }}</label>
+          <input formControlName="avatarUrl" placeholder="https://..." class="input-clean" />
+        </div>
+
+        <div class="input-group">
+          <label>{{ 'profile:fields.location' | t:'Ubicación' }}</label>
+          <input formControlName="location"
+            placeholder="{{ 'profile:fields.locationPlaceholder' | t:'Ej. Av. Siempre Viva 742, Ciudad' }}"
+            (input)="updateLocationPreview()" class="input-clean" />
+          <small class="input-hint">
+            {{ 'profile:fields.locationHint' | t:'Ingresa una dirección real para mostrarla en tu perfil.' }}
+          </small>
+        </div>
+
+        <div class="map-preview" *ngIf="locationPreviewUrl()">
+          <iframe [src]="locationPreviewUrl()" loading="lazy" allowfullscreen
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <a class="map-link" [href]="locationMapsLink()" target="_blank" rel="noreferrer">
+            {{ 'profile:fields.openMap' | t:'Abrir en OpenStreetMap' }}
+          </a>
+        </div>
+
+        <div class="input-group">
+          <label>{{ 'profile:fields.bio' | t:'Bio' }}</label>
+          <textarea formControlName="bio" rows="4" class="input-clean"></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button class="btn btn--primary" type="submit" [disabled]="publicForm.invalid || isLoading()">
+            {{ 'profile:actions.savePublic' | t:'Guardar perfil público' }}
+          </button>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>

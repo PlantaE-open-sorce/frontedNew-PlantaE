@@ -1,0 +1,117 @@
+<div class="page-layout animate-fade-in">
+  <div class="page-header">
+    <div>
+      <p class="eyebrow">{{ 'alerts:list.eyebrow' | t:'Monitoreo' }}</p>
+      <h1>{{ 'alerts:list.title' | t:'Alertas recientes' }}</h1>
+      <p class="text-muted">{{ 'alerts:list.subtitle' | t:'Visualiza eventos críticos y actúa rápido.' }}</p>
+    </div>
+    <div class="header-actions">
+      <button class="btn btn--ghost" type="button" (click)="resetFilters()">
+        {{ 'alerts:list.actions.reset' | t:'Restablecer' }}
+      </button>
+      <button class="btn btn--outline" type="button" (click)="refresh()">
+        <i class="icon-refresh"></i>
+        {{ 'alerts:list.actions.refresh' | t:'Actualizar' }}
+      </button>
+    </div>
+  </div>
+
+  <div class="alerts-container">
+    <form [formGroup]="filters" (ngSubmit)="applyFilters()" class="card-minimal filters-bar">
+      <div class="filter-group">
+        <label class="filter-label">{{ 'alerts:list.filters.plantLabel' | t:'Planta' }}</label>
+        <app-autocomplete formControlName="plantId" [options]="plantOptions()"
+          [placeholder]="'alerts:list.filters.plant' | t:'Buscar planta...'" displayField="label" valueField="id"
+          [emptyMessage]="'alerts:list.filters.noPlants' | t:'No hay plantas'"></app-autocomplete>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">{{ 'alerts:list.filters.sensorLabel' | t:'Sensor' }}</label>
+        <app-autocomplete formControlName="sensorId" [options]="sensorOptions()"
+          [placeholder]="'alerts:list.filters.sensor' | t:'Buscar sensor...'" displayField="label" valueField="id"
+          [emptyMessage]="'alerts:list.filters.noSensors' | t:'No hay sensores'"></app-autocomplete>
+      </div>
+      <div class="filter-group">
+        <label class="filter-label">{{ 'alerts:list.filters.typeLabel' | t:'Tipo' }}</label>
+        <app-autocomplete formControlName="type" [options]="alertTypeOptions()"
+          [placeholder]="'alerts:list.filters.type' | t:'Tipo de alerta...'" displayField="label" valueField="id"
+          [emptyMessage]="'alerts:list.filters.noTypes' | t:'No hay tipos'"></app-autocomplete>
+      </div>
+      <button type="submit" class="btn btn--primary btn--icon-only" title="Aplicar filtros">
+        <span class="btn-icon">→</span>
+      </button>
+    </form>
+
+    <div class="alerts-grid" *ngIf="alerts().length; else emptyState">
+      <article *ngFor="let alert of alerts()" class="alert-card animate-slide-up">
+        <header class="alert-header">
+          <div class="alert-type">
+            <span class="status-dot" [ngClass]="'status-' + alert.status.toLowerCase()"></span>
+            <strong>{{ getAlertTypeName(alert.type) }}</strong>
+          </div>
+          <span class="badge" [ngClass]="badgeClass(alert.status)">
+            {{ getStatusCopy(alert.status).key | t:getStatusCopy(alert.status).fallback }}
+          </span>
+        </header>
+
+        <p class="alert-message" *ngIf="alert.message">{{ alert.message }}</p>
+
+        <div class="alert-meta">
+          <div class="meta-item meta-item--full">
+            <span class="label">{{ 'alerts:list.meta.plant' | t:'Planta' }}</span>
+            <ng-container *ngIf="alert.plantId; else noPlant">
+              <a [routerLink]="['/plants', alert.plantId]" class="link-subtle plant-link">
+                <span class="plant-name">{{ alert.plantName || 'Sin nombre' }}</span>
+                <span class="plant-species" *ngIf="alert.plantSpecies">({{ alert.plantSpecies }})</span>
+              </a>
+              <span class="meta-id">ID: {{ alert.plantId | slice:0:8 }}...</span>
+            </ng-container>
+            <ng-template #noPlant>{{ 'common:generic.na' | t:'N/A' }}</ng-template>
+          </div>
+          <div class="meta-item">
+            <span class="label">{{ 'alerts:list.meta.sensor' | t:'Sensor' }}</span>
+            <ng-container *ngIf="alert.sensorId; else noSensor">
+              <span class="sensor-type">{{ getSensorTypeName(alert.sensorType) }}</span>
+              <span class="meta-id">ID: {{ alert.sensorId | slice:0:8 }}...</span>
+            </ng-container>
+            <ng-template #noSensor>{{ 'common:generic.na' | t:'N/A' }}</ng-template>
+          </div>
+          <div class="meta-item">
+            <span class="label">{{ 'alerts:list.meta.time' | t:'Hora' }}</span>
+            <span>{{ alert.occurredAt | date: 'short' }}</span>
+          </div>
+          <div class="meta-item" *ngIf="alert.value !== null && alert.value !== undefined">
+            <span class="label">{{ 'alerts:list.meta.value' | t:'Valor' }}</span>
+            <span class="metric-value">{{ alert.value }}{{ alert.metric ? ' ' + alert.metric : '' }}</span>
+          </div>
+        </div>
+
+        <div class="alert-actions" *ngIf="alert.status !== 'RESOLVED' && alert.status !== 'RECOVERED'">
+          <button class="btn btn--small btn--outline" type="button" (click)="resolve(alert.id)">
+            {{ 'alerts:list.actions.resolve' | t:'Marcar como resuelta' }}
+          </button>
+        </div>
+      </article>
+    </div>
+
+    <ng-template #emptyState>
+      <div class="empty-state animate-fade-in">
+        <div class="empty-icon">✓</div>
+        <h3>{{ 'alerts:list.empty' | t:'Todo bajo control' }}</h3>
+        <p class="text-muted">{{ 'alerts:list.emptyDesc' | t:'No hay alertas pendientes con los filtros actuales.' }}
+        </p>
+      </div>
+    </ng-template>
+
+    <div class="pagination" *ngIf="alerts().length">
+      <button class="btn btn--ghost" type="button" (click)="previousPage()" [disabled]="page() === 0">
+        {{ 'alerts:list.pagination.previous' | t:'Anterior' }}
+      </button>
+      <span class="page-indicator">
+        {{ 'alerts:list.pagination.page' | t:'Página' }} {{ page() + 1 }}
+      </span>
+      <button class="btn btn--ghost" type="button" (click)="nextPage()" [disabled]="!hasMore()">
+        {{ 'alerts:list.pagination.next' | t:'Siguiente' }}
+      </button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,257 @@
+<section class="page-card hero">
+  <div>
+    <p class="eyebrow">{{ 'nursery:hero.eyebrow' | t:'Operaciones de vivero' }}</p>
+    <h1>{{ 'nursery:hero.title' | t:'Todo tu vivero en una sola vista' }}</h1>
+    <p class="muted">
+      {{
+        'nursery:hero.subtitle'
+          | t:
+            'Monitorea lotes, registra tareas críticas y aplica insumos con pasos guiados y claros.'
+      }}
+    </p>
+    <div class="hero__actions">
+      <button class="btn" type="button" (click)="scrollTo('tasks')">
+        {{ 'nursery:hero.ctaTasks' | t:'Ver tareas' }}
+      </button>
+      <button class="btn btn--ghost" type="button" (click)="scrollTo('inputs')">
+        {{ 'nursery:hero.ctaInputs' | t:'Registrar insumo' }}
+      </button>
+    </div>
+  </div>
+  <div class="hero__chips">
+    <div class="chip">
+      {{ 'nursery:hero.chips.tasks' | t:'Tareas pendientes y próximas' }}
+    </div>
+    <div class="chip">
+      {{ 'nursery:hero.chips.inputs' | t:'Aplicaciones recientes' }}
+    </div>
+    <div class="chip">
+      {{ 'nursery:hero.chips.batches' | t:'Lotes con riesgo' }}
+    </div>
+  </div>
+</section>
+
+<section class="nursery-grid">
+  <article class="page-card summary-card" *ngIf="dashboard() as data">
+    <header>
+      <p class="eyebrow">{{ 'nursery:summary.eyebrow' | t:'Indicadores' }}</p>
+      <h2>{{ 'nursery:summary.title' | t:'Panel de vivero' }}</h2>
+    </header>
+    <div class="summary-grid">
+      <div>
+        <p>{{ 'nursery:summary.plants' | t:'Plantas activas' }}</p>
+        <strong>{{ data.totalPlants }}</strong>
+      </div>
+      <div>
+        <p>{{ 'nursery:summary.batches' | t:'Lotes activos' }}</p>
+        <strong>{{ data.activeBatches }}</strong>
+      </div>
+      <div>
+        <p>{{ 'nursery:summary.tasks' | t:'Tareas pendientes' }}</p>
+        <strong>{{ data.pendingTasks }}</strong>
+      </div>
+    </div>
+  </article>
+
+  <article class="page-card" *ngIf="batches().length">
+    <header class="section-header">
+      <div>
+        <p class="eyebrow">{{ 'nursery:batches.eyebrow' | t:'Destacados' }}</p>
+        <h3>{{ 'nursery:batches.title' | t:'Lotes en seguimiento' }}</h3>
+      </div>
+      <button class="btn btn--ghost" type="button" (click)="reloadDashboard()">
+        {{ 'nursery:tasks.refresh' | t:'Actualizar' }}
+      </button>
+    </header>
+    <div class="batch-grid">
+      <article *ngFor="let batch of batches()" class="batch-card">
+        <div class="batch-card__head">
+          <p>{{ batch.label }}</p>
+          <span>{{ batch.species }}</span>
+        </div>
+        <dl>
+          <div>
+            <dt>{{ 'nursery:batches.plants' | t:'Plantas' }}</dt>
+            <dd>{{ batch.plantCount }}</dd>
+          </div>
+          <div>
+            <dt>{{ 'nursery:batches.routine' | t:'Rutina' }}</dt>
+            <dd>
+              {{
+                routineStatusLabel(batch.routineStatus).key
+                  | t: routineStatusLabel(batch.routineStatus).fallback
+              }}
+            </dd>
+          </div>
+          <div>
+            <dt>{{ 'nursery:batches.progress' | t:'Avance' }}</dt>
+            <dd>{{ batch.progressPercent }}%</dd>
+          </div>
+        </dl>
+      </article>
+    </div>
+  </article>
+
+  <article class="page-card" id="tasks">
+    <header class="section-header">
+      <div>
+        <p class="eyebrow">{{ 'nursery:tasks.eyebrow' | t:'Operaciones' }}</p>
+        <h3>{{ 'nursery:tasks.title' | t:'Tareas críticas' }}</h3>
+      </div>
+      <button class="btn btn--ghost" type="button" (click)="reloadTasks()">
+        {{ 'nursery:tasks.refresh' | t:'Actualizar' }}
+      </button>
+    </header>
+    <div class="task-list" *ngIf="tasks().length; else noTasks">
+      <article *ngFor="let task of tasks()" class="task-card">
+        <div>
+          <p class="task-card__title">{{ task.title }}</p>
+          <p class="task-card__meta">
+            #{{ task.assetId }} ·
+            {{
+              labelForAssetType(task.assetType).label
+                | t: labelForAssetType(task.assetType).fallback
+            }}
+            ·
+            {{
+              priorityLabel(task.priority).label
+                | t: priorityLabel(task.priority).fallback
+            }}
+          </p>
+        </div>
+        <p class="task-card__notes">{{ task.notes ?? ('common:generic.none' | t:'—') }}</p>
+        <p class="task-card__due" *ngIf="task.dueDate">
+          {{ 'nursery:tasks.due' | t:'Vence' }}: {{ task.dueDate | date: 'mediumDate' }}
+        </p>
+      </article>
+    </div>
+    <ng-template #noTasks>
+      <p class="empty-state">{{ 'nursery:tasks.empty' | t:'Sin tareas asignadas.' }}</p>
+    </ng-template>
+
+    <form [formGroup]="taskForm" (ngSubmit)="createTask()" class="form-grid form-grid--two">
+      <label>
+        <span>{{ 'nursery:tasks.form.title' | t:'Título' }}</span>
+        <input formControlName="title" />
+      </label>
+      <label>
+        <span>{{ 'nursery:tasks.form.assetId' | t:'Activo' }}</span>
+        <input formControlName="assetId" />
+      </label>
+      <label>
+        <span>{{ 'nursery:tasks.form.assetType' | t:'Tipo de activo' }}</span>
+        <select formControlName="assetType">
+          <option *ngFor="let option of assetTypeOptions" [value]="option.value">
+            {{ option.label | t: option.fallback }}
+          </option>
+        </select>
+      </label>
+      <label>
+        <span>{{ 'nursery:tasks.form.priority' | t:'Prioridad' }}</span>
+        <select formControlName="priority">
+          <option *ngFor="let option of priorityOptions" [value]="option.value">
+            {{ option.label | t: option.fallback }}
+          </option>
+        </select>
+      </label>
+      <label>
+        <span>{{ 'nursery:tasks.form.dueDate' | t:'Fecha límite' }}</span>
+        <input type="date" formControlName="dueDate" />
+      </label>
+      <label class="form-grid__full">
+        <span>{{ 'nursery:tasks.form.notes' | t:'Notas' }}</span>
+        <textarea rows="2" formControlName="notes"></textarea>
+      </label>
+      <div class="form-grid__actions">
+        <button class="btn" type="submit" [disabled]="taskForm.invalid || isLoadingTasks()">
+          {{ 'nursery:tasks.form.action' | t:'Registrar tarea' }}
+        </button>
+      </div>
+    </form>
+  </article>
+
+  <article class="page-card" id="inputs">
+    <header class="section-header">
+      <div>
+        <p class="eyebrow">{{ 'nursery:inputs.eyebrow' | t:'Insumos' }}</p>
+        <h3>{{ 'nursery:inputs.title' | t:'Aplicaciones recientes' }}</h3>
+      </div>
+      <button class="btn btn--ghost" type="button" (click)="reloadInputs()">
+        {{ 'nursery:tasks.refresh' | t:'Actualizar' }}
+      </button>
+    </header>
+    <table class="inputs-table" *ngIf="inputs().length; else noInputs">
+      <thead>
+        <tr>
+          <th>{{ 'nursery:inputs.asset' | t:'Activo' }}</th>
+          <th>{{ 'nursery:inputs.type' | t:'Tipo' }}</th>
+          <th>{{ 'nursery:inputs.quantity' | t:'Cantidad' }}</th>
+          <th>{{ 'nursery:inputs.cost' | t:'Costo' }}</th>
+          <th>{{ 'nursery:inputs.appliedAt' | t:'Aplicado' }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let input of inputs()">
+          <td>
+            #{{ input.assetId }} ·
+            {{
+              labelForAssetType(input.assetType).label
+                | t: labelForAssetType(input.assetType).fallback
+            }}
+          </td>
+          <td>{{ input.inputType }}</td>
+          <td>{{ input.quantity }} {{ input.unit }}</td>
+          <td>$ {{ input.cost | number: '1.2-2' }}</td>
+          <td>{{ input.appliedAt ? (input.appliedAt | date: 'short') : ('common:generic.none' | t:'—') }}</td>
+        </tr>
+      </tbody>
+    </table>
+    <ng-template #noInputs>
+      <p class="empty-state">{{ 'nursery:inputs.empty' | t:'Sin registros de insumos.' }}</p>
+    </ng-template>
+
+    <form [formGroup]="inputForm" (ngSubmit)="createInput()" class="form-grid form-grid--two">
+      <label>
+        <span>{{ 'nursery:inputs.form.assetId' | t:'Activo' }}</span>
+        <input formControlName="assetId" />
+      </label>
+      <label>
+        <span>{{ 'nursery:inputs.form.assetType' | t:'Tipo de activo' }}</span>
+        <select formControlName="assetType">
+          <option *ngFor="let option of assetTypeOptions" [value]="option.value">
+            {{ option.label | t: option.fallback }}
+          </option>
+        </select>
+      </label>
+      <label>
+        <span>{{ 'nursery:inputs.form.inputType' | t:'Tipo de insumo' }}</span>
+        <input formControlName="inputType" />
+      </label>
+      <label>
+        <span>{{ 'nursery:inputs.form.quantity' | t:'Cantidad' }}</span>
+        <input formControlName="quantity" type="number" step="0.1" />
+      </label>
+      <label>
+        <span>{{ 'nursery:inputs.form.unit' | t:'Unidad' }}</span>
+        <input formControlName="unit" />
+      </label>
+      <label>
+        <span>{{ 'nursery:inputs.form.cost' | t:'Costo' }}</span>
+        <input formControlName="cost" type="number" step="0.01" />
+      </label>
+      <label>
+        <span>{{ 'nursery:inputs.form.appliedAt' | t:'Aplicado en' }}</span>
+        <input formControlName="appliedAt" type="datetime-local" />
+      </label>
+      <label>
+        <span>{{ 'nursery:inputs.form.appliedBy' | t:'Aplicado por' }}</span>
+        <input formControlName="appliedBy" />
+      </label>
+      <div class="form-grid__actions">
+        <button class="btn" type="submit" [disabled]="inputForm.invalid || isLoadingInputs()">
+          {{ 'nursery:inputs.form.action' | t:'Registrar insumo' }}
+        </button>
+      </div>
+    </form>
+  </article>
+</section>

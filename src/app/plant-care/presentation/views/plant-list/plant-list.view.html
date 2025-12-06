@@ -1,0 +1,154 @@
+<div class="page-layout animate-fade-in">
+  <div class="page-header">
+    <div>
+      <p class="eyebrow">{{ 'plants:list.eyebrow' | t:'Mis Cultivos' }}</p>
+      <h1>{{ 'plants:list.title' | t:'Plantas Registradas' }}</h1>
+      <p class="text-muted">{{ 'plants:list.subtitle' | t:'Gestiona y monitorea el estado de tus plantas.' }}</p>
+    </div>
+    <div class="header-actions">
+      <a class="btn btn--primary" routerLink="/plants/new">
+        {{ 'plants:list.add' | t:'Nueva Planta' }}
+      </a>
+    </div>
+  </div>
+
+  <!-- Search & Filters Bar -->
+  <div class="filters-bar card-minimal">
+    <form [formGroup]="filters" (ngSubmit)="applyFilters()" class="filters-form">
+      <div class="search-group">
+        <span class="search-icon">🔍</span>
+        <input formControlName="keyword" type="text" class="search-input"
+          [placeholder]="'plants:list.filters.searchPlaceholder' | t:'Buscar por nombre, especie...'"
+          list="search-suggestions" />
+        <datalist id="search-suggestions">
+          <option *ngFor="let option of speciesOptions" [value]="option"></option>
+        </datalist>
+      </div>
+
+      <div class="filters-group">
+        <select formControlName="status" class="filter-select">
+          <option value="">{{ 'plants:list.filters.status.all' | t:'Todos los estados' }}</option>
+          <option *ngFor="let option of statusOptions" [value]="option.value">
+            {{ option.label | t:option.fallback }}
+          </option>
+        </select>
+
+        <select formControlName="sort" class="filter-select">
+          <option *ngFor="let option of sortOptions" [value]="option.value">
+            {{ option.label | t: option.fallback }}
+          </option>
+        </select>
+
+        <button type="button" class="btn btn--ghost" (click)="toggleAdvancedFilters()">
+          {{ showAdvancedFilters ? ('common:actions.hideFilters' | t:'Menos filtros') : ('common:actions.moreFilters' |
+          t:'Más filtros') }}
+        </button>
+      </div>
+    </form>
+
+    <!-- Advanced Filters -->
+    <div class="advanced-filters animate-slide-up" *ngIf="showAdvancedFilters" [formGroup]="filters">
+      <div class="grid-3">
+        <div class="input-group">
+          <label>{{ 'plants:list.filters.species' | t:'Especie' }}</label>
+          <input list="species-options" formControlName="species" class="input-clean" placeholder="Ej. Ficus" />
+          <datalist id="species-options">
+            <option *ngFor="let option of speciesOptions" [value]="option"></option>
+          </datalist>
+        </div>
+
+        <div class="input-group">
+          <label>{{ 'plants:list.filters.location' | t:'Ubicación' }}</label>
+          <input formControlName="location" class="input-clean" placeholder="Ej. Sala" />
+        </div>
+
+        <div class="input-group">
+          <label>{{ 'plants:list.filters.sensor' | t:'Sensor Vinculado' }}</label>
+          <select formControlName="sensorId" class="input-clean">
+            <option value="">{{ 'common:generic.all' | t:'Todos' }}</option>
+            <option *ngFor="let option of sensorOptions" [value]="option.id">{{ option.label }}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="advanced-actions">
+        <button type="button" class="btn btn--ghost btn--small" (click)="resetFilters()">
+          {{ 'plants:list.filters.clear' | t:'Limpiar filtros' }}
+        </button>
+        <button type="button" class="btn btn--outline btn--small" (click)="applyFilters()">
+          {{ 'plants:list.filters.apply' | t:'Aplicar' }}
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading State -->
+  <div *ngIf="loading()" class="loading-state">
+    <div class="spinner"></div>
+    <p>{{ 'plants:list.loading' | t:'Cargando tus plantas...' }}</p>
+  </div>
+
+  <!-- Plants Grid -->
+  <div *ngIf="!loading() && plants().length" class="plants-grid animate-fade-in">
+    <article class="plant-card card-minimal" *ngFor="let plant of plants()">
+      <div class="plant-card__image">
+        <div class="plant-placeholder">
+          {{ plant.name.charAt(0).toUpperCase() }}
+        </div>
+        <span class="status-badge" [ngClass]="badgeClass(plant.status)">
+          {{ statusCopy(plant.status).key | t:statusCopy(plant.status).fallback }}
+        </span>
+      </div>
+
+      <div class="plant-card__content">
+        <header>
+          <h3 class="plant-name" [routerLink]="['/plants', plant.id]">{{ plant.name }}</h3>
+          <p class="plant-species">{{ plant.species }}</p>
+        </header>
+
+        <div class="plant-details">
+          <div class="detail-item">
+            <span class="icon">📍</span>
+            <span>{{ plant.location || ('common:generic.none' | t:'—') }}</span>
+          </div>
+          <div class="detail-item">
+            <span class="icon">📡</span>
+            <span [class.text-muted]="!plant.sensorId">
+              {{ plant.sensorId ? 'Sensor activo' : ('plants:list.noSensor' | t:'Sin sensor') }}
+            </span>
+          </div>
+        </div>
+
+        <footer class="plant-card__footer">
+          <a class="btn btn--outline btn--small btn--full" [routerLink]="['/plants', plant.id]">
+            {{ 'plants:list.view' | t:'Ver Detalles' }}
+          </a>
+        </footer>
+      </div>
+    </article>
+  </div>
+
+  <!-- Empty State -->
+  <div *ngIf="!loading() && !plants().length" class="empty-state card-minimal">
+    <div class="empty-icon">🌱</div>
+    <h3>{{ 'plants:list.empty' | t:'No encontramos plantas' }}</h3>
+    <p class="text-muted">{{ 'plants:list.emptyDesc' | t:'Intenta ajustar los filtros o registra una nueva planta.' }}
+    </p>
+    <button type="button" class="btn btn--outline" (click)="resetFilters()">
+      {{ 'plants:list.filters.clear' | t:'Limpiar filtros' }}
+    </button>
+  </div>
+
+  <!-- Pagination -->
+  <nav *ngIf="pageInfo() && plants().length" class="pagination">
+    <button class="btn btn--ghost" (click)="changePage(-1)" [disabled]="(pageInfo()?.page ?? 0) === 0">
+      ← {{ 'plants:list.pagination.previous' | t:'Anterior' }}
+    </button>
+    <span class="page-indicator">
+      {{ (pageInfo()?.page ?? 0) + 1 }} / {{ pageInfo()?.totalPages ?? 1 }}
+    </span>
+    <button class="btn btn--ghost" (click)="changePage(1)" [disabled]="isLastPage()">
+      {{ 'plants:list.pagination.next' | t:'Siguiente' }} →
+    </button>
+  </nav>
+</div>

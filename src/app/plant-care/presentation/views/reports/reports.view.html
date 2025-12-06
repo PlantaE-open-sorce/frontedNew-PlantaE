@@ -1,0 +1,110 @@
+<div class="page-layout animate-fade-in">
+    <div class="page-header">
+        <div>
+            <p class="eyebrow">{{ 'reports:eyebrow' | t:'Datos históricos' }}</p>
+            <h1>{{ 'reports:title' | t:'Reportes' }}</h1>
+            <p class="text-muted">{{ 'reports:subtitle' | t:'Descarga reportes en PDF o CSV para tus plantas o un
+                resumen general.' }}</p>
+        </div>
+        <div class="header-actions">
+            <button class="btn btn--outline" type="button" (click)="prepare('summary')" [disabled]="downloading">
+                <i class="icon-file-text"></i>
+                {{ 'reports:actions.summary' | t:'Resumen PDF' }}
+            </button>
+        </div>
+    </div>
+
+    <form [formGroup]="form" class="reports-container">
+        <section class="card-minimal report-config-card">
+            <h3 class="section-title">{{ 'reports:config.title' | t:'Configuración del reporte' }}</h3>
+            
+            <div class="config-grid">
+                <!-- Plant Selector -->
+                <div class="config-group plant-group">
+                    <label>{{ 'reports:fields.plant' | t:'Planta' }}</label>
+                    <select formControlName="plantId" class="input-clean input-lg">
+                        <option value="">{{ 'reports:fields.selectPlant' | t:'Selecciona una planta' }}</option>
+                        <option *ngFor="let plant of plants()" [value]="plant.id">{{ plant.name }}</option>
+                    </select>
+                </div>
+
+                <!-- Date Range -->
+                <div class="config-group date-group">
+                    <label>{{ 'reports:fields.from' | t:'Desde' }}</label>
+                    <input formControlName="from" type="date" class="input-clean input-lg" />
+                </div>
+
+                <div class="config-group date-group">
+                    <label>{{ 'reports:fields.to' | t:'Hasta' }}</label>
+                    <input formControlName="to" type="date" class="input-clean input-lg" />
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="metrics-wrapper">
+                <h3>{{ 'reports:fields.metrics' | t:'Métricas a incluir' }}</h3>
+                <div class="metrics-grid">
+                    <label *ngFor="let metric of availableMetrics" class="metric-card"
+                        [class.metric-card--selected]="isMetricSelected(metric.id)">
+                        <input type="checkbox" [value]="metric.id" (change)="toggleMetric(metric.id, $event)" />
+                        <div class="metric-icon">
+                            <ng-container [ngSwitch]="metric.id">
+                                <span *ngSwitchCase="'temp'">🌡️</span>
+                                <span *ngSwitchCase="'humidity'">💧</span>
+                                <span *ngSwitchCase="'soil'">🌱</span>
+                                <span *ngSwitchCase="'ph'">🧪</span>
+                                <span *ngSwitchCase="'light'">☀️</span>
+                                <span *ngSwitchDefault>📊</span>
+                            </ng-container>
+                        </div>
+                        <span class="metric-label">{{ metric.label | t:metric.fallback }}</span>
+                        <div class="metric-check">✓</div>
+                    </label>
+                </div>
+            </div>
+        </section>
+
+        <!-- Main Actions -->
+        <div class="actions-bar">
+            <button class="btn btn--primary btn--large" type="button" (click)="prepare('pdf')" [disabled]="downloading">
+                {{ 'reports:actions.pdf' | t:'Generar Reporte PDF' }}
+            </button>
+            <button class="btn btn--ghost" type="button" (click)="prepare('csv')" [disabled]="downloading">
+                {{ 'reports:actions.csv' | t:'Descargar CSV' }}
+            </button>
+        </div>
+    </form>
+
+    <!-- Preview Section -->
+    <div class="preview-overlay animate-slide-up" *ngIf="previewUrl">
+        <div class="preview-card">
+            <header class="preview-header">
+                <div>
+                    <h3>{{ 'reports:preview.title' | t:'Vista Previa' }}</h3>
+                    <p class="text-muted">{{ 'reports:preview.subtitle' | t:'Verifica el contenido antes de descargar.'
+                        }}</p>
+                </div>
+                <div class="preview-actions">
+                    <button class="btn btn--ghost" type="button" (click)="cancelPreview()">
+                        {{ 'reports:preview.cancel' | t:'Cancelar' }}
+                    </button>
+                    <button class="btn btn--primary" type="button" (click)="confirmDownload()">
+                        {{ 'reports:preview.download' | t:'Descargar Archivo' }}
+                    </button>
+                </div>
+            </header>
+
+            <div class="preview-content">
+                <div *ngIf="previewType === 'pdf'; else csvPreview" class="pdf-container">
+                    <object [data]="previewUrl" type="application/pdf" class="preview-frame">
+                        {{ 'reports:preview.noSupport' | t:'Tu navegador no pudo mostrar el PDF.' }}
+                    </object>
+                </div>
+                <ng-template #csvPreview>
+                    <pre class="csv-preview">{{ previewText }}</pre>
+                </ng-template>
+            </div>
+        </div>
+    </div>
+</div>

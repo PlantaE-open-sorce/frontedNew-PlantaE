@@ -1,0 +1,65 @@
+<section class="settings">
+    <header class="settings__header">
+        <div>
+            <p class="settings__eyebrow">{{ 'settings:eyebrow' | t:'Alertas y recordatorios' }}</p>
+            <h2>{{ 'settings:title' | t:'Notificaciones' }}</h2>
+            <p class="settings__subtitle">
+                {{ 'settings:subtitle' | t:'Configura tus horarios silenciosos y canales preferidos.' }}
+            </p>
+        </div>
+        <span class="settings__status" [class.settings__status--saving]="isSaving()">
+            {{
+            isSaving()
+            ? ('settings:status.saving' | t:'Guardando...')
+            : ('settings:status.live' | t:'En tiempo real')
+            }}
+        </span>
+    </header>
+
+    <form class="settings__form" [formGroup]="form" (ngSubmit)="save()">
+        <div class="settings__grid">
+            <label class="settings__field">
+                <span>{{ 'settings:fields.quietStart' | t:'Inicio horas silenciosas' }}</span>
+                <input formControlName="quietHoursStart" placeholder="22:00" />
+                <small>{{ 'settings:fields.format' | t:'Formato 24h' }}</small>
+            </label>
+            <label class="settings__field">
+                <span>{{ 'settings:fields.quietEnd' | t:'Fin horas silenciosas' }}</span>
+                <input formControlName="quietHoursEnd" placeholder="06:00" />
+                <small>{{ 'settings:fields.format' | t:'Formato 24h' }}</small>
+            </label>
+            <label class="settings__field">
+                <span>{{ 'settings:fields.digest' | t:'Hora del resumen' }}</span>
+                <input formControlName="digestTime" placeholder="08:00" />
+                <small>{{ 'settings:fields.digestHint' | t:'Recibirás un resumen diario' }}</small>
+            </label>
+        </div>
+
+        <div class="settings__preferences" formArrayName="preferences">
+            <div class="preference-card" *ngFor="let pref of preferences.controls; let i = index" [formGroupName]="i">
+                <div class="preference-card__info">
+                    <p class="preference-card__type">{{ pref.value.type | titlecase }}</p>
+                    <p class="preference-card__hint">
+                        {{ 'settings:preferences.hint' | t:'Elige cómo quieres enterarte.' }}
+                    </p>
+                </div>
+                <div class="preference-card__toggles">
+                    <label class="toggle">
+                        <input type="checkbox" formControlName="emailEnabled" />
+                        <span>{{ 'settings:preferences.email' | t:'Correo' }}</span>
+                    </label>
+                    <label class="toggle">
+                        <input type="checkbox" formControlName="inAppEnabled" />
+                        <span>{{ 'settings:preferences.inApp' | t:'In-app' }}</span>
+                    </label>
+                </div>
+            </div>
+        </div>
+
+        <div class="settings__actions">
+            <button type="submit" class="btn" [disabled]="isSaving()">
+                {{ 'settings:actions.save' | t:'Guardar cambios' }}
+            </button>
+        </div>
+    </form>
+</section>

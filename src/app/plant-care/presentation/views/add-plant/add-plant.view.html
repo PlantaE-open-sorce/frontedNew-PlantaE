@@ -1,0 +1,64 @@
+<section class="add-plant page-card">
+  <header class="add-plant__header">
+    <div>
+      <p class="add-plant__eyebrow">{{ 'plants:add.eyebrow' | t:'Nuevo cultivo' }}</p>
+      <h2>{{ 'plants:add.title' | t:'Registrar planta' }}</h2>
+      <p>
+        {{ 'plants:add.subtitle' | t:'Completa los datos para comenzar a monitorear.' }}
+      </p>
+    </div>
+  </header>
+
+  <form [formGroup]="form" (ngSubmit)="save()" class="add-plant__form">
+    <label>
+      <span>{{ 'plants:add.fields.name' | t:'Nombre' }}</span>
+      <input formControlName="name" [placeholder]="'plants:add.fields.namePlaceholder' | t:'Ej. Ficus Lyrata'" />
+    </label>
+    <div class="species-picker">
+      <div class="species-picker__tabs" role="tablist">
+        <button type="button" *ngFor="let category of categories" class="species-tab"
+          [class.active]="category.key === activeCategory" (click)="setCategory(category.key)"
+          [attr.aria-selected]="category.key === activeCategory">
+          {{ category.label }}
+        </button>
+      </div>
+      <label>
+        <span>{{ 'plants:add.fields.species' | t:'Especie' }}</span>
+        <select formControlName="species">
+          <option value="">{{ 'plants:add.fields.speciesPlaceholder' | t:'Selecciona una especie' }}</option>
+          <optgroup *ngFor="let group of groups" [label]="group.name">
+            <option *ngFor="let option of group.items" [value]="option.value">
+              {{ option.label }}
+            </option>
+          </optgroup>
+        </select>
+      </label>
+    </div>
+    <label>
+      <span>{{ 'plants:add.fields.location' | t:'Ubicación' }}</span>
+      <input formControlName="location"
+        [placeholder]="'plants:add.fields.locationPlaceholder' | t:'Ej. Invernadero Norte, Bogotá'"
+        (input)="refreshMap()" />
+      <small class="muted">
+        {{ 'plants:add.fields.locationHint' | t:'Ayuda a tu equipo a identificar la ubicación física.' }}
+      </small>
+    </label>
+    <div class="add-plant__map" *ngIf="mapUrl()">
+      <iframe [src]="mapUrl()" loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade"></iframe>
+    </div>
+    <label>
+      <span>{{ 'plants:add.fields.sensor' | t:'Sensor' }}</span>
+      <select formControlName="sensorId">
+        <option value="">{{ 'common:generic.none' | t:'—' }}</option>
+        <option *ngFor="let option of sensorOptions" [value]="option.id">
+          {{ option.label }}
+        </option>
+      </select>
+    </label>
+    <div class="form-grid__actions">
+      <button type="submit" class="btn" [disabled]="form.invalid">
+        {{ 'plants:add.actions.save' | t:'Guardar' }}
+      </button>
+    </div>
+  </form>
+</section>

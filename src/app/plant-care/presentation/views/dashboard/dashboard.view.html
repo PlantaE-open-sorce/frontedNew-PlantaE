@@ -1,0 +1,101 @@
+<div class="page-layout animate-fade-in">
+  <div class="dashboard-header">
+    <div class="header-content">
+      <h1 class="font-display">{{ 'dashboard:greeting' | t:{ count: dashboard()?.plants?.length || 0 } }}</h1>
+      <p class="text-secondary text-lg">
+      <p class="text-secondary text-lg">
+        {{ 'dashboard:subtitle' | t:'Rota tus macetas para un crecimiento uniforme.' }}
+      </p>
+    </div>
+    <div class="header-date">
+      <span class="date-display">{{ today | localizedDate }}</span>
+    </div>
+  </div>
+
+  <div class="dashboard-grid">
+    <div class="main-column">
+      <section class="dashboard-section">
+        <header class="section-header flex justify-between items-center mb-4">
+          <h3 class="font-medium text-xl">{{ 'dashboard:plants.title' | t:'Mis Plantas' }}</h3>
+          <a href="/plants" class="link-subtle">{{ 'common:actions.viewAll' | t:'Ver todas' }} →</a>
+        </header>
+
+        <div class="plants-grid" *ngIf="dashboard()?.plants?.length; else emptyPlants">
+          <article class="plant-card-minimal" *ngFor="let plant of dashboard()?.plants">
+            <div class="plant-card-icon">🌿</div>
+            <div class="plant-card-info">
+              <h4>{{ plant.name }}</h4>
+              <p class="text-sm text-secondary">{{ plant.species }}</p>
+            </div>
+            <div class="status-indicator" [class.status-alert]="plant.hasAlerts" [title]="plant.status"></div>
+          </article>
+        </div>
+        <ng-template #emptyPlants>
+          <div class="empty-state-minimal">
+            <p>{{ 'dashboard:empty' | t:'Registra tu primera planta para verla aquí.' }}</p>
+            <a href="/plants/new" class="btn btn--primary btn--sm mt-3">{{ 'plants:list.add' | t:'Registrar Planta'
+              }}</a>
+          </div>
+        </ng-template>
+      </section>
+
+      <section class="dashboard-section mt-8">
+        <header class="section-header mb-4">
+          <h3 class="font-medium text-xl">{{ 'dashboard:recent.title' | t:'Actividad Reciente' }}</h3>
+        </header>
+
+        <div class="actions-wrapper" *ngIf="manualActions()?.length; else noActions">
+          <ul class="actions-list-minimal">
+            <li *ngFor="let action of manualActions()" class="action-item-minimal">
+              <div class="action-icon-soft">✨</div>
+              <div class="action-content">
+                <strong class="text-primary">{{ action.actionType }}</strong>
+                <p class="text-sm text-secondary">{{ action.notes || ('dashboard:recent.noNotes' | t:'Sin notas') }}</p>
+              </div>
+              <span class="action-time text-xs text-secondary">{{ action.performedAt | localizedDate: { hour: 'numeric',
+                minute: 'numeric' } }}</span>
+            </li>
+          </ul>
+        </div>
+        <ng-template #noActions>
+          <div class="empty-state-minimal">
+            <p>{{ 'dashboard:recent.empty' | t:'Todavía no registras acciones.' }}</p>
+          </div>
+        </ng-template>
+      </section>
+    </div>
+
+    <div class="side-column">
+      <section class="quick-log-card">
+        <header class="mb-5">
+          <h3 class="font-medium text-lg">{{ 'dashboard:manual.title' | t:'Registrar acción manual' }}</h3>
+        </header>
+
+        <form [formGroup]="manualActionForm" (ngSubmit)="registerAction()" class="form-minimal">
+          <div class="input-group-minimal">
+            <input formControlName="actionType"
+              placeholder="{{ 'dashboard:manual.typePlaceholder' | t:'Riego, poda...' }}" class="input-clean" />
+          </div>
+
+          <div class="input-group-minimal">
+            <textarea formControlName="notes" rows="2"
+              placeholder="{{ 'dashboard:manual.notesPlaceholder' | t:'Notas...' }}" class="input-clean"></textarea>
+          </div>
+
+          <div class="input-group-minimal">
+            <input type="datetime-local" formControlName="performedAt" class="input-clean" />
+          </div>
+
+          <div class="input-group-minimal">
+            <input type="number" formControlName="durationMinutes"
+              placeholder="{{ 'dashboard:manual.duration' | t:'Duración (min)' }}" min="0" class="input-clean" />
+          </div>
+
+          <button class="btn btn--primary btn--full mt-2" type="submit" [disabled]="manualActionForm.invalid">
+            {{ 'dashboard:manual.action' | t:'Registrar' }}
+          </button>
+        </form>
+      </section>
+    </div>
+  </div>
+</div>

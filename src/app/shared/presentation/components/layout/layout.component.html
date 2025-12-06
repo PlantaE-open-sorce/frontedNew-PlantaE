@@ -1,0 +1,70 @@
+<div class="layout" [class.layout--collapsed]="!sidebarOpen">
+    <aside class="layout__sidebar" [attr.aria-hidden]="!sidebarOpen">
+        <div class="layout__logo">
+            <img src="assets/plante-logo.png" alt="PlantaE" class="layout__logo-image" />
+            <button class="layout__toggle" type="button" (click)="toggleSidebar()"
+                [attr.aria-label]="'layout:aria.closeSidebar' | t:'Cerrar menú'">
+                {{ sidebarOpen ? '×' : '☰' }}
+            </button>
+        </div>
+        <nav class="layout__menu">
+            <ng-container *ngFor="let link of navLinks">
+                <a *ngIf="canDisplay(link)" class="layout__menu-link" [routerLink]="link.path" routerLinkActive="active"
+                    [routerLinkActiveOptions]="link.exact ? exactMatch : defaultMatch">
+                    <svg class="layout__menu-icon" [attr.viewBox]="getIcon(link.icon).viewBox" aria-hidden="true"
+                        focusable="false">
+                        <ng-container *ngFor="let path of getIcon(link.icon).paths">
+                            <path [attr.d]="path.d" [attr.fill]="path.fill ?? 'none'" [attr.stroke]="path.stroke"
+                                [attr.stroke-width]="path.strokeWidth" [attr.stroke-linecap]="path.strokeLinecap"
+                                [attr.stroke-linejoin]="path.strokeLinejoin" [attr.opacity]="path.opacity" />
+                        </ng-container>
+                    </svg>
+                    <span>{{ link.labelKey | t: link.fallback }}</span>
+                    <span *ngIf="link.hasBadge && alertCount() > 0" class="badge badge--danger layout__menu-badge">
+                        {{ alertCount() }}
+                    </span>
+                </a>
+            </ng-container>
+        </nav>
+        <div class="layout__extra">
+            <span *ngIf="accountType() as account" class="badge badge--ghost">
+                {{
+                (accountTypeCopy[account]?.key ?? 'iam:accountTypes.home')
+                | t:(accountTypeCopy[account]?.fallback ?? account)
+                }}
+            </span>
+            <app-language-switcher />
+            <button class="btn btn--danger layout__logout" type="button" (click)="logout()">
+                <svg class="layout__menu-icon" [attr.viewBox]="getIcon('logout').viewBox" aria-hidden="true"
+                    focusable="false">
+                    <ng-container *ngFor="let path of getIcon('logout').paths">
+                        <path [attr.d]="path.d" [attr.fill]="path.fill ?? 'none'" [attr.stroke]="path.stroke"
+                            [attr.stroke-width]="path.strokeWidth" [attr.stroke-linecap]="path.strokeLinecap"
+                            [attr.stroke-linejoin]="path.strokeLinejoin" />
+                    </ng-container>
+                </svg>
+                <span>{{ 'layout:menu.logout' | t:'Cerrar sesión' }}</span>
+            </button>
+        </div>
+    </aside>
+
+    <div class="layout__backdrop" *ngIf="sidebarOpen" (click)="toggleSidebar()"></div>
+
+    <button class="layout__fab" type="button" *ngIf="!sidebarOpen" (click)="toggleSidebar()"
+        [attr.aria-label]="'layout:aria.openSidebar' | t:'Abrir menú principal'">
+        ☰
+    </button>
+
+    <div class="layout__main">
+        <main class="layout__content">
+            <div class="layout__content-inner">
+                <router-outlet />
+            </div>
+        </main>
+        <div class="layout__footer">
+            <app-footer-content />
+        </div>
+    </div>
+
+    <app-tour-overlay />
+</div>

@@ -1,0 +1,164 @@
+.hero {
+  display: grid;
+  gap: 1rem;
+  background: linear-gradient(135deg, #0f3d2e, #1c5a43);
+  color: #fff;
+}
+
+.hero h1 {
+  margin: 0.25rem 0;
+}
+
+.hero .muted {
+  margin: 0 0 0.75rem;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.hero__actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.hero__actions .btn--ghost {
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #fff;
+}
+
+.hero__chips {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.chip {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  padding: 0.35rem 0.75rem;
+  border-radius: 999px;
+  font-size: 0.9rem;
+}
+
+.nursery-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 1rem;
+}
+
+.summary-grid div {
+  background: #f4faf6;
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.summary-grid strong {
+  font-size: 1.8rem;
+  display: block;
+}
+
+.batch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1rem;
+}
+
+.batch-card {
+  border: 1px solid var(--color-border);
+  border-radius: 1rem;
+  padding: 1rem;
+}
+
+.batch-card__head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.task-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  margin-bottom: 1.5rem;
+}
+
+.task-card {
+  border: 1px solid var(--color-border);
+  border-radius: 0.9rem;
+  padding: 0.85rem;
+}
+
+.task-card__title {
+  font-weight: 600;
+  margin: 0;
+}
+
+.task-card__meta {
+  margin: 0;
+  font-size: 0.85rem;
+  color: var(--color-muted);
+}
+
+.task-card__notes {
+  margin: 0.5rem 0;
+}
+
+.inputs-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1.5rem;
+}
+
+.inputs-table th,
+.inputs-table td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--color-border);
+  text-align: left;
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.75rem;
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.form-grid {
+  gap: 1rem;
+}
+
+.form-grid__actions {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.empty-state {
+  color: var(--color-muted);
+  margin-bottom: 1rem;
+}
+
+@media (max-width: 640px) {
+  .form-grid__actions {
+    justify-content: stretch;
+  }
+
+  .form-grid__actions .btn {
+    width: 100%;
+  }
+}

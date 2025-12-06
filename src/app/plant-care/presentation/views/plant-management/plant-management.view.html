@@ -1,0 +1,75 @@
+<div class="page-layout animate-fade-in">
+  <app-confirmation-modal *ngIf="showDeleteModal" [title]="'plants:management.deleteTitle' | t:'Eliminar planta'"
+    [message]="'plants:management.deleteMessage' | t:'Esta acción no se puede deshacer. ¿Deseas continuar?'"
+    [confirmText]="'plants:management.actions.delete' | t:'Eliminar'" (confirm)="confirmDelete()"
+    (cancel)="showDeleteModal = false"></app-confirmation-modal>
+  <div class="page-header">
+    <div>
+      <p class="eyebrow">{{ 'plants:management.eyebrow' | t:'Colección' }}</p>
+      <h1>{{ 'plants:management.title' | t:'Gestión de plantas' }}</h1>
+      <p class="text-muted">{{ 'plants:management.subtitle' | t:'Administra tu colección y monitorea su estado.' }}</p>
+    </div>
+    <div class="header-actions">
+      <a routerLink="/plants/new" class="btn btn--primary">
+        <span class="icon-plus">+</span>
+        {{ 'plants:management.actions.add' | t:'Añadir planta' }}
+      </a>
+    </div>
+  </div>
+
+  <div class="card-minimal table-container" *ngIf="plants().length; else emptyState">
+    <table class="clean-table">
+      <thead>
+        <tr>
+          <th>{{ 'plants:management.table.name' | t:'Nombre' }}</th>
+          <th>{{ 'plants:management.table.status' | t:'Estado' }}</th>
+          <th>{{ 'plants:management.table.alerts' | t:'Alertas' }}</th>
+          <th class="text-right">{{ 'plants:management.table.actions' | t:'Acciones' }}</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let plant of plants(); trackBy: trackById" class="table-row">
+          <td class="font-medium">{{ plant.name }}</td>
+          <td>
+            <span class="status-badge" [class.status-active]="plant.status === 'ACTIVE'">
+              {{ plant.status ?? ('common:generic.na' | t:'N/D') }}
+            </span>
+          </td>
+          <td>
+            <span class="alert-indicator" *ngIf="plant.hasAlerts; else noAlerts">
+              <span class="dot-warning"></span>
+              {{ 'plants:management.alerts.yes' | t:'Activas' }}
+            </span>
+            <ng-template #noAlerts>
+              <span class="text-muted">{{ 'plants:management.alerts.no' | t:'Sin alertas' }}</span>
+            </ng-template>
+          </td>
+          <td class="actions-cell">
+            <div class="action-buttons">
+              <a [routerLink]="['/plants', plant.id]" class="btn-icon btn-icon--ghost"
+                title="{{ 'plants:management.actions.view' | t:'Ver detalles' }}">
+                👁️
+              </a>
+              <button type="button" class="btn-icon btn-icon--danger-ghost" (click)="delete(plant.id)"
+                title="{{ 'plants:management.actions.delete' | t:'Eliminar' }}">
+                ❌
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <ng-template #emptyState>
+    <div class="empty-state animate-fade-in">
+      <div class="empty-illustration">🌱</div>
+      <h3>{{ 'plants:management.empty' | t:'Tu jardín está vacío' }}</h3>
+      <p class="text-muted">{{ 'plants:management.emptyDesc' | t:'Comienza añadiendo tu primera planta para
+        monitorearla.' }}</p>
+      <a routerLink="/plants/new" class="btn btn--primary mt-4">
+        {{ 'plants:management.actions.addFirst' | t:'Añadir primera planta' }}
+      </a>
+    </div>
+  </ng-template>
+</div>
